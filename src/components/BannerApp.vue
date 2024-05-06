@@ -1,5 +1,9 @@
 <template>
-  <div class="banner unit parallax column flex-center justify-center items-center">
+  <div
+    class="banner unit parallax column flex-center justify-center items-center"
+    ref="parallaxElement"
+    @wheel.prevent="handleScroll"
+  >
     <p class="banner__title text-white text-uppercase">Деревья славы</p>
     <p class="banner__subtitle text-white text-subtitle2 text-uppercase ">Проект амбассадоров "Цифрового Прорыва" и РГЭУ
       (РИНХ)</p>
@@ -7,24 +11,43 @@
 </template>
 
 <script setup lang="ts">
-const parallaxElement: HTMLElement | null = document.querySelector('.parallax');
+import { ref, onMounted } from 'vue';
 
-function updateParallax() {
-  if (parallaxElement) {
-    const scrollPosition = window.scrollY;
-    const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
-    const scrollPercent = scrollPosition / maxScroll;
-    const minSize = 50; // минимальный размер фонового изображения в %
-    const maxSize = 70; // максимальный размер фонового изображения в %
-    const size = minSize + (maxSize - minSize) * scrollPercent;
+const parallaxElement = ref<HTMLElement | null>(null);
+let maxSizeReached = false;
+let scrollPosition = 0;
 
-    parallaxElement.style.backgroundSize = `${size}% auto`;
+function handleScroll(event: WheelEvent) {
+  if (!maxSizeReached) {
+    event.preventDefault();
+    scrollPosition += event.deltaY;
+    updateParallax();
+  } else {
+    window.scrollBy(0, event.deltaY);
   }
 }
 
-window.addEventListener('scroll', updateParallax);
+function updateParallax() {
+  if (parallaxElement.value) {
+    const maxScroll = parallaxElement.value.clientHeight;
+    const scrollPercent = scrollPosition / maxScroll;
+    const minSize = 25; // минимальный размер фонового изображения в %
+    const maxSize = 60; // максимальный размер фонового изображения в %
+    let size = minSize + (maxSize - minSize) * scrollPercent;
 
-// вызываем updateParallax после загрузки страницы
-window.addEventListener('load', updateParallax);
+    // Ограничиваем размер изображения максимальным значением
+    size = Math.min(size, maxSize);
+
+    parallaxElement.value.style.backgroundSize = `${size}% auto`;
+
+    if (size >= maxSize) {
+      maxSizeReached = true;
+    }
+  }
+}
+
+onMounted(() => {
+  window.addEventListener('scroll', updateParallax);
+});
 
 </script>

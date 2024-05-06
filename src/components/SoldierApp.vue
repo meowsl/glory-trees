@@ -1,10 +1,13 @@
 <template>
-  <div class="soldier unit q-pa-lg">
+  <div class="soldier unit">
     <p class="soldier__title text-uppercase text-center">
       Все они - чьи-то братья, отцы <br> или деды, с героическим именем "Русский солдат"
     </p>
     <div class="soldier__img row justify-center q-mt-lg">
-      <img :src="BannerSoldier">
+      <img
+        :src="BannerSoldier"
+        class="soldier__img-image"
+      >
     </div>
   </div>
 
