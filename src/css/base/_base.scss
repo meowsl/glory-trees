@@ -33,7 +33,17 @@ h6 {
 
 body {
   margin: 0;
-  font-family: 'Montserrat' !important;
+  font-family: 'Manrope' !important;
+  background-color: #171717;
+  background-image: url('src/assets/images/noise.svg');
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.unit {
+  background-image: url('src/assets/images/noise.svg');
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .leaflet-bottom {
