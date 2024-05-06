@@ -1,24 +1,26 @@
 @charset 'UTF-8';
 
 .custom-icon {
-    svg {
-        width: 1em;
-        height: 1em;
-        fill: currentColor !important;
-        * {
-            fill: currentColor !important;
-        }
+  svg {
+    width: 1em;
+    height: 1em;
+    fill: currentColor !important;
+
+    * {
+      fill: currentColor !important;
     }
+  }
 }
 
 a {
-    color: inherit;
-    text-decoration: inherit;
+  color: inherit;
+  text-decoration: inherit;
 }
 
 li {
-    list-style: none;
+  list-style: none;
 }
+
 p,
 h1,
 h2,
@@ -26,10 +28,14 @@ h3,
 h4,
 h5,
 h6 {
-    margin: 0;
+  margin: 0;
 }
 
 body {
-    margin: 0;
-    font-family: 'Montserrat' !important;
+  margin: 0;
+  font-family: 'Montserrat' !important;
+}
+
+.leaflet-bottom {
+  display: none !important;
 }
