@@ -1,7 +1,7 @@
 <template>
   <div class='soldier unit q-pa-lg'>
     <p class='soldier__title text-uppercase text-center'>
-      Все они - чьи-то братья, отцы <br>
+      Все они - чьи-то братья, отцы
       или деды, с героическим именем 'Русский солдат'
     </p>
     <div class='soldier__img row justify-center q-mt-lg'>
