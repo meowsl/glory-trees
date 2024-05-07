@@ -1,13 +1,6 @@
 .map {
-  height: 765px;
+  height: 100vh;
   width: 100%;
-}
-
-.custom-popup {
-  background-color: white;
-  border-radius: 10px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-  padding: 10px;
 }
 
 .popup-content {
@@ -38,4 +31,80 @@
 .popup-death {
   font-size: 14px;
   line-height: 1.5;
+}
+
+.hidden {
+  display: none;
+}
+
+// Изменение стилей библиотеки
+
+.leaflet-bottom {
+  display: none !important;
+}
+
+.leaflet-popup{
+  background-color: #000 !important;
+  border-radius: 0 !important;
+}
+
+.leaflet-popup-pane{
+  position: absolute;
+  top:0;
+  left: 0;
+}
+
+.leaflet-popup-content-wrapper{
+  padding: 0.5rem !important;
+  background-color: #000 !important;
+  border-radius: 0 !important;
+  border: 3px solid #841818 !important;
+}
+
+.custom-popup-container {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: none;
+  z-index: 1000;
+  color: #fff;
+  max-width: 550px;
+}
+
+.popup-content{
+  padding: 1rem;
+}
+
+.popup-image{
+  max-width: 7rem;
+}
+
+.popup-header {
+  background-color: #222222;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.8rem;
+}
+
+.popup-title{
+
+  &__star{
+    min-width: 15px;
+    min-height: 15px;
+    margin-bottom: 3px;
+  }
+}
+
+.custom-popup-close-button-container {
+  cursor: pointer;
+}
+
+.custom-popup-close-button {
+  background-color: transparent;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  font-size: 16px;
 }

@@ -21,6 +21,9 @@ import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import GpwMark from "images/gpw_mark.png"
 import SvoMark from "images/svo_mark.png"
+import CloseIcon from "images/close_icon.svg"
+import GpwStar from "images/gpw_star.svg"
+
 
 const { getHeroList } = useHero()
 
@@ -64,6 +67,15 @@ async function initMap() {
     gpw: new L.Icon({ iconUrl: GpwMark, iconSize: [25, 41], iconAnchor: [12, 41] }),
     svo: new L.Icon({ iconUrl: SvoMark, iconSize: [25, 41], iconAnchor: [12, 41] })
   };
+
+  const popupContainer = document.createElement('div');
+  popupContainer.className = 'custom-popup-container';
+  mapInstance.getContainer().appendChild(popupContainer);
+
+  function closePopup() {
+    popupContainer.style.display = 'none';
+  }
+
   for (const hero of heroes.value) {
     try {
       const coordinates = await geocodeAddress(hero.gravePlace);
@@ -76,8 +88,22 @@ async function initMap() {
           marker.setIcon(customIcons.svo);
         }
 
+        const closeButton = document.createElement('button');
+        closeButton.className = 'custom-popup-close-button';
+        closeButton.innerHTML = '<img src="src/assets/images/close_icon.svg" alt="Close">';
+        closeButton.addEventListener('click', closePopup);
+
         const popupContent = `
-          <div class="popup-content column">
+        <div class="popup-header row justify-center text-subtitle2 items-center q-pa-sm">
+          <div class="popup-title row items-center">
+            <img src="${GpwStar}" class="popup-title__star q-px-sm">
+            <p class="text-center">Герой ВОВ</p>
+            </div>
+          <div class="custom-popup-close-button-container">
+            <button class="custom-popup-close-button row justify-center items-center"><img src="${CloseIcon}" alt="Close"></button>
+          </div>
+            </div>
+          <div class="popup-content column text-white">
             <div class="row">
               <div class="popup-image">
                 <img src="${hero.photo}" alt="${hero.firstname}">
@@ -97,10 +123,15 @@ async function initMap() {
           </div>
         `;
 
-        marker.bindPopup(popupContent, {
-          className: 'custom-popup',
-          closeButton: false,
-          minWidth: 300,
+        marker.on('click', () => {
+          popupContainer.innerHTML = popupContent;
+          popupContainer.style.display = 'block';
+          popupContainer.style.top = '10px';
+          popupContainer.style.left = '10px';
+          const closeButtonInPopup = popupContainer.querySelector('.custom-popup-close-button');
+          if (closeButtonInPopup) {
+            closeButtonInPopup.addEventListener('click', closePopup);
+          }
         });
 
         marker.addTo(mapInstance);
