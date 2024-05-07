@@ -3,7 +3,10 @@
     <q-page-container>
       <router-view />
     </q-page-container>
+    <Footer />
   </q-layout>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import Footer from './FooterLayout.vue';
+</script>

@@ -50,6 +50,7 @@ import Vladislav from "images/team/Vladislav.png"
 import Sergey from "images/team/Sergey.png"
 import Dmitriy from "images/team/Dmitriy.png"
 
+
 const mates = [
   { photo: Olesya, name: 'Савельева Олеся', role: 'Идейный вдохновитель проекта' },
   { photo: Anton, name: 'Прохоров Антон', role: 'Куратор проектной группы РГЭУ(РИНХ)' },
