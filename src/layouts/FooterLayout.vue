@@ -1,8 +1,8 @@
 <template>
-  <div class="footer q-px-xl q-pb-lg justify-end">
+  <div class="footer q-px-0 q-px-md-xl q-pb-lg justify-end">
     <div class="row">
-      <div class="col-7"></div>
-      <div class="col-5 row justify-around"> <img :src="RSVLogo">
+      <div class="col-none col-md-7"></div>
+      <div class="col-12 col-md-5 row justify-around"> <img :src="RSVLogo">
         <img :src="CPLogo">
         <img :src="RSUELogo">
       </div>

@@ -8,7 +8,7 @@
 
   &__image{
     left:0;
-    top:150px;
+    top:100px;
     position: absolute;
     z-index: -1;
   }
@@ -23,4 +23,40 @@
 ul {
   list-style-position: inside;
   padding-left: 0;
+}
+
+@media (max-width:1440px){
+  .team{
+
+    &__title{
+      font-size: 60px;
+    }
+  }
+}
+
+@media (max-width:1024px){
+  .team{
+
+    &__title{
+      font-size: 48px;
+    }
+  }
+}
+
+@media (max-width:960px){
+  .team{
+
+    &__title{
+      font-size: 36px;
+    }
+  }
+}
+
+@media (max-width:660px){
+  .team{
+
+    &__title{
+      font-size: 24px;
+    }
+  }
 }

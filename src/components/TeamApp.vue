@@ -1,21 +1,21 @@
 <template>
-  <div class="team unit q-pa-xl relative-position">
+  <div class="team unit q-pa-lg relative-position">
     <p class="team__title text-white text-uppercase">Над проектом работали</p>
     <div class="row q-mt-xl">
-      <div class="col-6 flex flex-center">
+      <div class="team__list col-12 col-md-6 col-lg-5 flex flex-center flex-last">
         <ul class="text-uppercase text-white text-body1 text-center">
           <li>
-            Амбассадоры "Цифврого прорыва"
+            Амбассадоры "Цифрового прорыва"
           </li>
           <li class="q-mt-lg">
             РГЭУ (РИНХ)
           </li>
         </ul>
       </div>
-      <div class="col-6">
+      <div class="col-12 col-md-6 col-lg-7 flex flex-first">
         <div class="row justify-end">
           <div
-            class="col-3 row justify-center"
+            class="col-6 col-md-4 col-lg-3 row justify-center"
             v-for="(mate, index) in mates"
             :key="mate.name"
           >
@@ -25,7 +25,7 @@
               :role="mate.role"
             />
             <div
-              v-if="(index + 1) % 4 === 0"
+              v-if="(index + 1) % 2 === 0"
               class="col-12 q-mt-xl q-pt-md"
             ></div>
           </div>
@@ -38,6 +38,7 @@
     </div>
   </div>
 </template>
+
 
 <script setup lang="ts">
 import MateCard from "./MateCard.vue";
