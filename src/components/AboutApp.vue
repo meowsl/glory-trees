@@ -1,5 +1,5 @@
 <template>
-  <div class="about unit q-pa-lg q-pa-md-xl">
+  <div class="about unit q-pa-lg">
     <div class="row text-white">
       <div class="col-12 col-md-11">
         <p class="about__title text-uppercase">цифровой мемориал героев Специальной военной операции и

@@ -4,7 +4,8 @@
       ref="map"
       class="map"
     ></div>
-    <p class="text-white text-subtitle2 q-mt-lg">какой-то текст про источники информации какой-то текст про источники
+    <p class="map__sources text-white text-subtitle2 q-mt-lg">какой-то текст про источники информации какой-то текст про
+      источники
       информации
       какой-то текст
       про источники
