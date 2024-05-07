@@ -111,11 +111,10 @@ async function initMap() {
               <div class="popup-info">
                 <div class="popup-name">${hero.lastname} ${hero.firstname} ${hero.midname}, ${hero.birthday} - ${hero.deathdate}</div>
                 <div class="popup-birth text-subtitle2">Место рождения: ${hero.birthPlace}</div>
-
+                <div class="popup-rank q-mt-sm text-subtitle2">
+                  Звание: ${hero.rank}
+                </div>
               </div>
-            </div>
-            <div class="popup-rank q-mt-sm text-subtitle2">
-              Звание: ${hero.rank}
             </div>
             <div class="popup-feat q-mt-sm text-subtitle2">
               ${hero.feat}
