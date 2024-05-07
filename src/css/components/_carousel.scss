@@ -32,11 +32,55 @@
       object-fit: cover;
     }
   }
+}
 
-  &__slide-title {
-    margin-top: 10px;
-    font-size: 18px;
-    font-weight: bold;
-    text-transform: capitalize;
+@media (max-width: 1440px){
+  .carousel{
+
+    &__slide{
+
+      &>.card{
+        height: 290px;
+      }
+
+      img{
+        height: 290px;
+        max-width: 195px;
+      }
+    }
+  }
+}
+
+@media (max-width: 1024px){
+  .carousel{
+
+    &__slide{
+
+      &>.card{
+        height: 265px;
+      }
+
+      img{
+        height: 265px;
+        max-width: 170px;
+      }
+    }
+  }
+}
+
+@media (max-width: 960px){
+  .carousel{
+
+    &__slide{
+
+      &>.card{
+        height: 240px;
+      }
+
+      img{
+        height: 240px;
+        max-width: 145px;
+      }
+    }
   }
 }

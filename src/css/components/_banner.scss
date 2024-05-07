@@ -37,5 +37,21 @@
     &__title {
       font-size: 105px;
     }
+
+    &__subtitle{
+      font-size: 12px;
+    }
+  }
+}
+
+@media (max-width: 960px){
+  .banner{
+
+    &__title{
+      font-size: 80px;
+    }
+    &__subtitle{
+      font-size: 10px;
+    }
   }
 }
