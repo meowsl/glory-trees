@@ -53,7 +53,6 @@ onMounted(async () => {
   startScrollAnimation();
 });
 
-
 const slideWidth = ref(0);
 const slideCount = ref(0);
 
@@ -62,6 +61,14 @@ let scrollInterval: number | undefined;
 function startScrollAnimation() {
   scrollInterval = window.setInterval(() => {
     slidePosition.value += 1;
+
+    if (slidePosition.value >= slideWidth.value * slides.length * 2) {
+      slidePosition.value = 0;
+    }
   }, 20); // Интервал обновления анимации в миллисекундах
 }
+
+onBeforeUnmount(() => {
+  clearInterval(scrollInterval);
+});
 </script>

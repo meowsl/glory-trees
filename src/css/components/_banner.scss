@@ -10,3 +10,32 @@
     font-size: 168px;
   }
 }
+
+
+@media (max-width: 1440px) {
+
+  .banner {
+
+    &__title {
+      font-size: 147px;
+    }
+  }
+}
+
+@media (max-width: 1240px) {
+  .banner {
+
+    &__title {
+      font-size: 126px;
+    }
+  }
+}
+
+@media (max-width: 1024px) {
+  .banner {
+
+    &__title {
+      font-size: 105px;
+    }
+  }
+}

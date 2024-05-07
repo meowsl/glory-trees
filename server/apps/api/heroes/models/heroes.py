@@ -36,6 +36,11 @@ class Heroes(models.Model):
 
     birthday = models.DateField(verbose_name=_("Дата рождения"))
 
+    birth_place = models.CharField(
+        max_length=256,
+        verbose_name=_("Место рождения")
+    )
+
     deathdate = models.DateField(verbose_name=_("Дата смерти"))
 
     grave_place = models.CharField(
@@ -43,6 +48,19 @@ class Heroes(models.Model):
         blank=True,
         null=True,
         verbose_name=_("Место захоронения")
+    )
+
+    rank = models.CharField(
+        max_length=128,
+        blank=True,
+        null=True,
+        verbose_name=_("Воинское звание")
+    )
+
+    feat = models.TextField(
+        blank=True,
+        null=True,
+        verbose_name=_("Описание подвига")
     )
 
     def __str__(self):
