@@ -1,7 +1,26 @@
 .team {
+  font-family: "Manrope";
   width: 100%;
 
   &__title {
     font-size: 70px;
   }
+
+  &__image{
+    left:0;
+    top:150px;
+    position: absolute;
+    z-index: -1;
+  }
+}
+
+.text-body1 li::marker {
+  font-weight: bold;
+  font-size: 20px;
+  color: #841818;
+}
+
+ul {
+  list-style-position: inside;
+  padding-left: 0;
 }

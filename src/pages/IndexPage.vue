@@ -6,7 +6,7 @@
     <TreesMap />
     <SoldierApp />
     <QuizApp />
-    <!-- <TeamApp /> -->
+    <TeamApp />
   </q-page>
 </template>
 
@@ -16,6 +16,6 @@ import CarouselApp from 'src/components/CarouselApp.vue';
 import AboutApp from 'src/components/AboutApp.vue';
 import TreesMap from 'src/components/TreesMap.vue';
 import SoldierApp from 'src/components/SoldierApp.vue';
-// import TeamApp from 'src/components/TeamApp.vue';
 import QuizApp from 'src/components/QuizApp.vue';
+import TeamApp from 'src/components/TeamApp.vue';
 </script>

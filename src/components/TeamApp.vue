@@ -1,14 +1,62 @@
 <template>
-  <div class="team unit q-pa-lg">
-    <div class="row">
-      <div class="col-6"></div>
-      <div class="col-6">
-        <p class="team__title text-white text-uppercase text-right">Над проектом работали</p>
+  <div class="team unit q-pa-xl relative-position">
+    <p class="team__title text-white text-uppercase">Над проектом работали</p>
+    <div class="row q-mt-xl">
+      <div class="col-6 flex flex-center">
+        <ul class="text-uppercase text-white text-body1 text-center">
+          <li>
+            Амбассадоры "Цифврого прорыва"
+          </li>
+          <li class="q-mt-lg">
+            РГЭУ (РИНХ)
+          </li>
+        </ul>
       </div>
+      <div class="col-6">
+        <div class="row justify-end">
+          <div
+            class="col-3 row justify-center"
+            v-for="(mate, index) in mates"
+            :key="mate.name"
+          >
+            <MateCard
+              :photo="mate.photo"
+              :name="mate.name"
+              :role="mate.role"
+            />
+            <div
+              v-if="(index + 1) % 4 === 0"
+              class="col-12 q-mt-xl q-pt-md"
+            ></div>
+          </div>
+        </div>
+      </div>
+      <img
+        :src="TeamBackground"
+        class="team__image absolute-position"
+      >
     </div>
   </div>
-
 </template>
 
 <script setup lang="ts">
+import MateCard from "./MateCard.vue";
+import TeamBackground from "images/team_background.svg"
+import Olesya from "images/team/Olesya.png"
+import Anton from "images/team/Anton.png"
+import Galina from "images/team/Galina.png"
+import Maria from "images/team/Maria.png"
+import Vladislav from "images/team/Vladislav.png"
+import Sergey from "images/team/Sergey.png"
+import Dmitriy from "images/team/Dmitriy.png"
+
+const mates = [
+  { photo: Olesya, name: 'Савельева Олеся', role: 'Идейный вдохновитель проекта' },
+  { photo: Anton, name: 'Прохоров Антон', role: 'Куратор проектной группы РГЭУ(РИНХ)' },
+  { photo: Galina, name: 'Бондаренко Галина', role: 'Координатор группы разработки РГЭУ(РИНХ)' },
+  { photo: Maria, name: 'Галкина Мария', role: 'Дизайнер' },
+  { photo: Vladislav, name: 'Бабушкин Владислав', role: 'Тимлид разработки' },
+  { photo: Sergey, name: 'Казанцев Сергей', role: 'Бэкенд разработчик' },
+  { photo: Dmitriy, name: 'Мяличкин Дмитрий', role: 'Бэкенд разработчик' },
+]
 </script>

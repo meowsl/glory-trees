@@ -6,8 +6,8 @@
       </div>
       <div class="col-6 q-mt-xl">
         <img
+          class="quiz__image"
           :src="QuizImg"
-          style="max-width: 100%;"
         >
       </div>
       <div class="quiz__subtitle col-6 q-mt-xl q-pl-xl text-white">
