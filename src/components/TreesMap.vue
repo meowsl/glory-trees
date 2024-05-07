@@ -1,5 +1,5 @@
 <template>
-  <div class="q-pa-xl unit">
+  <div class="q-pa-lg unit">
     <div
       ref="map"
       class="map"

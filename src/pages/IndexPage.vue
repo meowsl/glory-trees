@@ -5,6 +5,7 @@
     <AboutApp />
     <TreesMap />
     <SoldierApp />
+    <QuizApp />
     <!-- <TeamApp /> -->
   </q-page>
 </template>
@@ -16,4 +17,5 @@ import AboutApp from 'src/components/AboutApp.vue';
 import TreesMap from 'src/components/TreesMap.vue';
 import SoldierApp from 'src/components/SoldierApp.vue';
 // import TeamApp from 'src/components/TeamApp.vue';
+import QuizApp from 'src/components/QuizApp.vue';
 </script>

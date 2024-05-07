@@ -1,5 +1,5 @@
 <template>
-  <div class='soldier unit'>
+  <div class='soldier unit q-pa-lg'>
     <p class='soldier__title text-uppercase text-center'>
       Все они - чьи-то братья, отцы <br>
       или деды, с героическим именем 'Русский солдат'
