@@ -31,11 +31,10 @@ function updateParallax() {
   if (parallaxElement.value) {
     const maxScroll = parallaxElement.value.clientHeight;
     const scrollPercent = scrollPosition / maxScroll;
-    const minSize = 25; // минимальный размер фонового изображения в %
-    const maxSize = 60; // максимальный размер фонового изображения в %
+    const minSize = 25;
+    const maxSize = 60;
     let size = minSize + (maxSize - minSize) * scrollPercent;
 
-    // Ограничиваем размер изображения максимальным значением
     size = Math.min(size, maxSize);
 
     parallaxElement.value.style.backgroundSize = `${size}% auto`;
