@@ -1,4 +1,3 @@
-import { rejects } from 'assert'
 import { api } from 'boot/axios'
 import { Hero } from 'src/models/hero'
 

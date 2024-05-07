@@ -24,7 +24,7 @@ import SvoMark from "images/svo_mark.png"
 
 const { getHeroList } = useHero()
 
-const map = ref(null);
+const map = ref();
 const heroes = ref<Hero[]>([])
 
 const getData = async () => {

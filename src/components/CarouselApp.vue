@@ -11,10 +11,7 @@
         :key="index"
       >
         <div class="card">
-          <img
-            :src="`src/assets/images/carousel/${slide}.png`"
-            :alt="slide"
-          >
+          <img :src="slide">
         </div>
       </div>
       <div
@@ -23,10 +20,7 @@
         :key="slides.length + index"
       >
         <div class="card">
-          <img
-            :src="`src/assets/images/carousel/${slide}.png`"
-            :alt="slide"
-          >
+          <img :src="slide">
         </div>
       </div>
     </div>
@@ -35,11 +29,19 @@
 
 <script setup lang="ts">
 import { ref, onMounted, onBeforeUnmount, nextTick } from 'vue';
+import photo1 from "images/carousel/photo1.png"
+import photo2 from "images/carousel/photo2.png"
+import photo3 from "images/carousel/photo3.png"
+import photo4 from "images/carousel/photo4.png"
+import photo5 from "images/carousel/photo5.png"
+import photo6 from "images/carousel/photo6.png"
+import photo7 from "images/carousel/photo7.png"
+import photo8 from "images/carousel/photo8.png"
 
 const track = ref<HTMLElement | null>(null);
 const slidePosition = ref(0);
 const slideDuration = ref(5); // Длительность анимации прокрутки в секундах
-const slides = ['photo1', 'photo2', 'photo3', 'photo4', 'photo5', 'photo6', 'photo7', 'photo8'];
+const slides = [photo1, photo2, photo3, photo4, photo5, photo6, photo7, photo8];
 
 onMounted(async () => {
   await nextTick();
