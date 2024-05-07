@@ -31,3 +31,99 @@
 .link-text{
   width: 50%;
 }
+
+@media (max-width: 1440px){
+  .quiz{
+
+    &__title{
+      font-size: 60px;
+    }
+
+    &__subtitle{
+
+      &> .main-text{
+        line-height: 2;
+        font-size: 44px;
+      }
+    }
+  }
+}
+
+@media (max-width: 1024px){
+  .quiz{
+
+    justify-content: center;
+    &__title{
+      font-size: 48px;
+      text-align: center;
+    }
+
+    &__subtitle{
+      text-align: center;
+      font-size: 32px;
+
+      &> .main-text{
+        font-size: 34px;
+      }
+
+      &>.body-text{
+        padding: 0;
+      }
+    }
+  }
+  .link-block{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .link-button{
+    margin-top: 1rem;
+    width: 85px;
+    height: 45px;
+  }
+
+  .link-text{
+    width: 100%;
+  }
+
+}
+
+@media (max-width: 960px){
+  .quiz{
+
+    &__title{
+      font-size: 36px;
+    }
+
+    &__subtitle{
+      font-size: 24px;
+      &> .main-text{
+        line-height: 1.5;
+        font-size: 26px;
+      }
+    }
+  }
+  .link-button{
+    height: 40px;
+  }
+}
+
+@media (max-width: 660px){
+  .quiz{
+
+    &__title{
+      font-size: 24px;
+    }
+
+    &__subtitle{
+      font-size: 16px;
+      &> .main-text{
+        font-size: 18px;
+      }
+    }
+  }
+  .link-button{
+    height: 35px;
+  }
+}
