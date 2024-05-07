@@ -65,11 +65,12 @@
   position: absolute;
   top: 10px;
   left: 10px;
-  background-color: rgba(0, 0, 0, 0.8);
+  background-color: rgba(0, 0, 0, 1);
   display: none;
   z-index: 1000;
   color: #fff;
   max-width: 550px;
+  border: #841818 3px solid;
 }
 
 .popup-content{
