@@ -32,6 +32,27 @@
       >
         <p>poisk.re</p>
       </a>
+      <a
+        class=""
+        href="https://znanierussia.ru/articles/"
+        target="_blank"
+      >
+        <p>znanierussia.ru</p>
+      </a>
+      <a
+        class="q-px-md"
+        href="https://героиспецоперации.рф/"
+        target="_blank"
+      >
+        <p>героиспецоперации.рф</p>
+      </a>
+      <a
+        class=""
+        href="https://герои-сво.рф/"
+        target="_blank"
+      >
+        <p>герои-сво.рф</p>
+      </a>
     </div>
   </div>
 </template>

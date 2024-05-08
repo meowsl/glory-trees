@@ -1,47 +1,47 @@
-.quiz{
+.quiz {
   font-family: "Manrope";
 
-  &__title{
+  &__title {
     font-size: 70px;
   }
 
-  &__subtitle{
+  &__subtitle {
 
-    &> .main-text{
+    &>.main-text {
       color: #841818;
       font-size: 50px;
       line-height: 65px;
     }
 
-    &> .body-text{
+    &>.body-text {
       padding: 0 6rem;
     }
   }
 
-  &__image{
+  &__image {
     max-width: 100%;
   }
 }
 
-.link-button{
+.link-button {
   width: 75px;
   height: 65px;
 }
 
-.link-text{
+.link-text {
   width: 50%;
 }
 
-@media (max-width: 1440px){
-  .quiz{
+@media (max-width: 1440px) {
+  .quiz {
 
-    &__title{
+    &__title {
       font-size: 60px;
     }
 
-    &__subtitle{
+    &__subtitle {
 
-      &> .main-text{
+      &>.main-text {
         line-height: 2;
         font-size: 44px;
       }
@@ -49,81 +49,88 @@
   }
 }
 
-@media (max-width: 1024px){
-  .quiz{
+@media (max-width: 1024px) {
+  .quiz {
 
     justify-content: center;
-    &__title{
+
+    &__title {
       font-size: 48px;
       text-align: center;
     }
 
-    &__subtitle{
-      text-align: center;
+    &__subtitle {
+
       font-size: 32px;
 
-      &> .main-text{
+      &>.main-text {
         font-size: 34px;
+        text-align: center;
       }
 
-      &>.body-text{
+      &>.body-text {
         padding: 0;
       }
     }
   }
-  .link-block{
+
+  .link-block {
     display: flex;
-    align-items: center;
-    justify-content: center;
+    flex-direction: row;
+
   }
 
-  .link-button{
+  .link-button {
     margin-top: 1rem;
     width: 85px;
     height: 45px;
   }
 
-  .link-text{
-    width: 100%;
+  .link-text {
+    width: auto;
   }
 
 }
 
-@media (max-width: 960px){
-  .quiz{
+@media (max-width: 960px) {
+  .quiz {
 
-    &__title{
+    &__title {
       font-size: 36px;
     }
 
-    &__subtitle{
+    &__subtitle {
       font-size: 24px;
-      &> .main-text{
+
+      &>.main-text {
         line-height: 1.5;
         font-size: 26px;
       }
     }
   }
-  .link-button{
+
+  .link-button {
     height: 40px;
   }
 }
 
-@media (max-width: 660px){
-  .quiz{
+@media (max-width: 660px) {
+  .quiz {
 
-    &__title{
+    &__title {
       font-size: 24px;
     }
 
-    &__subtitle{
+    &__subtitle {
       font-size: 16px;
-      &> .main-text{
+
+      &>.main-text {
         font-size: 18px;
       }
     }
   }
-  .link-button{
+
+  .link-button {
     height: 35px;
   }
 }

@@ -2,9 +2,9 @@
   <div class="quiz unit q-pa-lg">
     <div class="row">
       <div class="col-12">
-        <p class="quiz__title text-white text-uppercase">Что вы знаете о великой победе?</p>
+        <p class="quiz__title text-white text-uppercase text-center">Что вы знаете о великой победе?</p>
       </div>
-      <div class="col-12 col-md-6 q-mt-xl">
+      <div class="col-12 col-md-6 q-mt-xl row justify-center">
         <img
           class="quiz__image"
           :src="QuizImg"
@@ -16,8 +16,8 @@
           биографии
           полководцев,
           фильмы и песни о Великой Отечественной войне</p>
-        <div class="link-block row justify-end items-center q-mt-lg">
-          <p class="link-text text-body1">Присоединяйтесь к телеграм-боту и пройдите увлекательный квест</p>
+        <div class="link-block row justify-end items-center q-mt-xl">
+          <p class="link-text text-body1 q-pl-md-xl">Присоединяйтесь к телеграм-боту и пройдите увлекательный квест</p>
           <a
             href="https://t.me/CP9m_bot"
             target="_blank"
