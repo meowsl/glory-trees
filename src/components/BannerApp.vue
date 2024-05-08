@@ -5,7 +5,9 @@
     @wheel.prevent="handleScroll"
   >
     <p class="banner__title text-white text-uppercase">Деревья славы</p>
-    <p class="banner__subtitle text-white text-subtitle2 text-uppercase">Проект амбассадоров "Цифрового Прорыва" и РГЭУ
+    <p class="banner__subtitle text-white text-subtitle2 text-uppercase">Проект амбассадоров "Цифрового Прорыва Сезон
+      Искусственный Интеллект"
+      и РГЭУ
       (РИНХ)</p>
   </div>
 </template>

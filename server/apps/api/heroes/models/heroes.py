@@ -1,6 +1,5 @@
 from django.db import models
 from django.utils.translation import gettext_lazy as _
-import datetime
 
 class Heroes(models.Model):
 
@@ -45,8 +44,6 @@ class Heroes(models.Model):
 
     grave_place = models.CharField(
         max_length=256,
-        blank=True,
-        null=True,
         verbose_name=_("Место захоронения")
     )
 
@@ -64,7 +61,7 @@ class Heroes(models.Model):
     )
 
     def __str__(self):
-        if len(self.midname) > 0:
+        if self.midname:
             return f'{self.lastname} {self.firstname[0]}. {self.midname[0]}.'
         else:
             return f'{self.lastname} {self.firstname[0]}.'
