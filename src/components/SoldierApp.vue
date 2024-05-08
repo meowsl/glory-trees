@@ -12,7 +12,6 @@
   </div>
 </template>
 
-
 <script setup lang="ts">
 import BannerSoldier from "images/banner_soldier.svg"
 import { ref, onMounted, onBeforeUnmount } from 'vue'

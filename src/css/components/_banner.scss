@@ -11,9 +11,7 @@
   }
 }
 
-
 @media (max-width: 1440px) {
-
   .banner {
 
     &__title {
@@ -37,7 +35,6 @@
     &__title {
       font-size: 105px;
     }
-
   }
 }
 
@@ -57,9 +54,7 @@
 @media (max-width:660px){
   .banner{
     height: 75vh;
-
     background-size: 50% auto !important;
-
 
     &__title{
       font-size: 58px;
@@ -78,5 +73,4 @@
       font-size: 42px;
     }
   }
-
 }

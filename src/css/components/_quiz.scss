@@ -51,7 +51,6 @@
 
 @media (max-width: 1024px) {
   .quiz {
-
     justify-content: center;
 
     &__title {
@@ -60,7 +59,6 @@
     }
 
     &__subtitle {
-
       font-size: 32px;
 
       &>.main-text {
@@ -77,7 +75,6 @@
   .link-block {
     display: flex;
     flex-direction: row;
-
   }
 
   .link-button {
@@ -89,7 +86,6 @@
   .link-text {
     width: auto;
   }
-
 }
 
 @media (max-width: 960px) {

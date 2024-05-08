@@ -180,7 +180,6 @@ async function initMap() {
             closeButtonInPopup.addEventListener('click', closePopup);
           }
         });
-
         marker.addTo(mapInstance);
       }
     } catch (error) {

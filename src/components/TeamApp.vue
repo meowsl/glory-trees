@@ -39,7 +39,6 @@
   </div>
 </template>
 
-
 <script setup lang="ts">
 import MateCard from "./MateCard.vue";
 import TeamBackground from "images/team_background.svg"
@@ -51,7 +50,6 @@ import Vladislav from "images/team/Vladislav.png"
 import Sergey from "images/team/Sergey.png"
 import Dmitriy from "images/team/Dmitriy.png"
 import Igor from "images/team/Igor.png"
-
 
 const mates = [
   { photo: Olesya, name: 'Савельева Олеся', role: 'Идейный вдохновитель проекта' },

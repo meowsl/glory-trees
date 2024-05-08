@@ -6,11 +6,11 @@
 
   &__track {
     display: flex;
-    width: auto; // Автоматическая ширина, чтобы разместить все слайды
+    width: auto;
   }
 
   &__slide {
-    width: calc(100% - 10px); // Вычитаем 10 пикселей для расстояния между слайдами
+    width: calc(100% - 10px);
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -18,7 +18,7 @@
     justify-content: center;
 
     &:not(:last-child) {
-      margin-right: 30px; // Расстояние между слайдами
+      margin-right: 30px;
     }
 
     &>.card {

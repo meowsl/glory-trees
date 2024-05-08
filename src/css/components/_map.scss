@@ -8,8 +8,6 @@
   display: none !important;
 }
 
-// Стили информации меток
-
 .popup-content {
   display: flex;
 }
@@ -85,7 +83,6 @@
   font-size: 16px;
 }
 
-
 @media (max-width: 1024px) {
 
   .popup-image {
@@ -129,8 +126,6 @@
 }
 
 @media (max-width: 660px) {
-
-
   .custom-popup-container {
     max-width: 305px;
   }

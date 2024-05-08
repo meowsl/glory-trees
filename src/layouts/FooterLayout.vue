@@ -34,9 +34,7 @@
           <img :src="RSUELogo">
         </a>
       </div>
-
     </div>
-
   </div>
 </template>
 
