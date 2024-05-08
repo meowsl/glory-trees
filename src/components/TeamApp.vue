@@ -50,6 +50,7 @@ import Maria from "images/team/Maria.png"
 import Vladislav from "images/team/Vladislav.png"
 import Sergey from "images/team/Sergey.png"
 import Dmitriy from "images/team/Dmitriy.png"
+import Igor from "images/team/Igor.png"
 
 
 const mates = [
@@ -60,5 +61,6 @@ const mates = [
   { photo: Vladislav, name: 'Бабушкин Владислав', role: 'Тимлид разработки' },
   { photo: Sergey, name: 'Казанцев Сергей', role: 'Бэкенд разработчик' },
   { photo: Dmitriy, name: 'Мяличкин Дмитрий', role: 'Бэкенд разработчик' },
+  { photo: Igor, name: 'Швецов Игорь', role: 'Бэкенд разработчик' }
 ]
 </script>
