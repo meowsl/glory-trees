@@ -6,10 +6,10 @@
     font-size: 70px;
   }
 
-  &__image{
+  &__image {
     max-width: 100%;
-    left:0;
-    top:100px;
+    left: 0;
+    top: 150px;
     position: absolute;
     z-index: -1;
   }
@@ -26,37 +26,37 @@ ul {
   padding-left: 0;
 }
 
-@media (max-width:1440px){
-  .team{
+@media (max-width:1440px) {
+  .team {
 
-    &__title{
+    &__title {
       font-size: 60px;
     }
   }
 }
 
-@media (max-width:1024px){
-  .team{
+@media (max-width:1024px) {
+  .team {
 
-    &__title{
+    &__title {
       font-size: 48px;
     }
   }
 }
 
-@media (max-width:960px){
-  .team{
+@media (max-width:960px) {
+  .team {
 
-    &__title{
+    &__title {
       font-size: 36px;
     }
   }
 }
 
-@media (max-width:660px){
-  .team{
+@media (max-width:660px) {
+  .team {
 
-    &__title{
+    &__title {
       font-size: 24px;
     }
   }

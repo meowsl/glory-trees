@@ -2,8 +2,8 @@
   <div class="about unit q-pa-lg">
     <div class="row text-white">
       <div class="col-12 col-md-11">
-        <p class="about__title text-uppercase">цифровой мемориал героев Специальной военной операции и
-          Великой Отечественной <br> войны</p>
+        <p class="about__title text-uppercase">цифровой мемориал героев Специальной военной операции <br> и
+          Великой Отечественной войны</p>
       </div>
       <div class="col-0 col-md-6"></div>
       <div class="col-12 col-md-6 column justify-end q-mt-lg">

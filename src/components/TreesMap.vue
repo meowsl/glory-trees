@@ -91,7 +91,7 @@ async function initMap() {
 
         const closeButton = document.createElement('button');
         closeButton.className = 'custom-popup-close-button';
-        closeButton.innerHTML = '<img src="src/assets/images/close_icon.svg" alt="Close">';
+        closeButton.innerHTML = `<img src="${CloseIcon}" alt="Close">`;
         closeButton.addEventListener('click', closePopup);
 
         const popupContent = `
