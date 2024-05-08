@@ -1,5 +1,5 @@
 <template>
-  <div class="carousel unit">
+  <div class="carousel unit q-pb-lg">
     <div
       ref="track"
       class="carousel__track"

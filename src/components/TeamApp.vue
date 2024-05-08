@@ -5,7 +5,7 @@
       <div class="col-12 col-md-6 col-lg-7 flex flex-first">
         <div class="row justify-end">
           <div
-            class="col-6 col-md-4 col-lg-3 row justify-center"
+            class="team__card col-6 col-md-4 col-lg-3 row justify-center"
             v-for="(mate, index) in mates"
             :key="mate.name"
           >
@@ -16,7 +16,7 @@
             />
             <div
               v-if="(index + 1) % 2 === 0"
-              class="col-12 q-mt-xl q-pt-md"
+              class="col-0 col-md-12 q-mt-xl q-pt-md"
             ></div>
           </div>
         </div>

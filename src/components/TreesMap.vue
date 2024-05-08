@@ -7,47 +7,49 @@
     <p class="map__sources text-white text-subtitle2 q-mt-lg">Источники:</p>
     <div class="row sources links text-white text-subtitle2 q-mt-sm justify-start">
       <a
+        class="q-pr-md"
         href="https://mpomos.ru/heroes"
         target="_blank"
       >
         <p>mpomos.ru/heroes</p>
       </a>
       <a
-        class="q-px-md"
+        class="q-pr-md"
         href="https://pamyat-naroda.ru/"
         target="_blank"
       >
         <p>pamyat-naroda.ru</p>
       </a>
       <a
+        class="q-pr-md"
         href="https://warheroes.ru/"
         target="_blank"
       >
         <p>warheroes.ru</p>
       </a>
       <a
-        class="q-px-md"
+        class="q-pr-md"
         href="https://poisk.re/"
         target="_blank"
       >
         <p>poisk.re</p>
       </a>
       <a
-        class=""
+        class="q-pr-md"
         href="https://znanierussia.ru/articles/"
         target="_blank"
       >
         <p>znanierussia.ru</p>
       </a>
       <a
-        class="q-px-md"
+        class="q-pr-md"
         href="https://героиспецоперации.рф/"
         target="_blank"
       >
         <p>героиспецоперации.рф</p>
       </a>
       <a
-        class=""
+        class="q-pr-md"
         href="https://герои-сво.рф/"
         target="_blank"
       >
