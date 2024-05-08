@@ -5,7 +5,7 @@
     @wheel.prevent="handleScroll"
   >
     <p class="banner__title text-white text-uppercase">Деревья славы</p>
-    <p class="banner__subtitle text-white text-subtitle2 text-uppercase">Проект амбассадоров "Цифрового Прорыва. Сезон:
+    <p class="banner__subtitle text-white text-subtitle2 text-uppercase">Проект амбассадоров "Цифровой Прорыв. Сезон:
       Искусственный Интеллект"
       совместно с РГЭУ
       (РИНХ)</p>

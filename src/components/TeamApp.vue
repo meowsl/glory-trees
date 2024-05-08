@@ -24,7 +24,7 @@
       <div class="team__list col-12 col-md-6 col-lg-5 flex flex-center flex-last">
         <ul class="text-uppercase text-white text-body1 text-center">
           <li>
-            Амбассадоры "Цифрового прорыва. <br> Сезон: Искусственный Интеллект"
+            Амбассадоры "Цифровой прорыв. <br> Сезон: Искусственный Интеллект"
           </li>
           <li class="q-mt-lg">
             РГЭУ (РИНХ)
