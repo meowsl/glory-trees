@@ -33,13 +33,10 @@ body {
   font-family: 'Manrope' !important;
   background-color: #171717;
   background-image: url('src/assets/images/noise.svg');
-  background-repeat: no-repeat;
+  background-repeat: repeat;
   background-size: contain;
 }
 
 .unit {
-  background-image: url('src/assets/images/noise.svg');
-  background-repeat: no-repeat;
-  background-size: cover;
   width: 100%;
 }
