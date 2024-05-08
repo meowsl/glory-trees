@@ -1,17 +1,7 @@
 <template>
   <div class="team unit q-pa-lg relative-position">
     <p class="team__title text-white text-uppercase text-center">Над проектом работали</p>
-    <div class="row q-mt-xl">
-      <div class="team__list col-12 col-md-6 col-lg-5 flex flex-center flex-last">
-        <ul class="text-uppercase text-white text-body1 text-center q-mt-xl">
-          <li>
-            Амбассадоры "Цифрового прорыва. <br> Сезон: Искусственный Интеллект"
-          </li>
-          <li class="q-mt-lg">
-            РГЭУ (РИНХ)
-          </li>
-        </ul>
-      </div>
+    <div class="row reverse q-mt-xl">
       <div class="col-12 col-md-6 col-lg-7 flex flex-first">
         <div class="row justify-end">
           <div
@@ -30,6 +20,16 @@
             ></div>
           </div>
         </div>
+      </div>
+      <div class="team__list col-12 col-md-6 col-lg-5 flex flex-center flex-last">
+        <ul class="text-uppercase text-white text-body1 text-center">
+          <li>
+            Амбассадоры "Цифрового прорыва. <br> Сезон: Искусственный Интеллект"
+          </li>
+          <li class="q-mt-lg">
+            РГЭУ (РИНХ)
+          </li>
+        </ul>
       </div>
       <img
         :src="TeamBackground"
