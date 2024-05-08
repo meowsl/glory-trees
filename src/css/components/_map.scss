@@ -10,7 +10,6 @@
 
 .popup-content {
   display: flex;
-  position: relative;
 }
 
 .popup-image {
@@ -40,7 +39,7 @@
 }
 
 .custom-popup-container {
-  position: relative;
+  position: absolute;
   top: 10px;
   left: 10px;
   background-color: rgba(0, 0, 0, 1);
@@ -51,7 +50,6 @@
   max-height: 65%;
   overflow-y: auto;
   border: #841818 3px solid;
-  pointer-events: auto;
 }
 
 .popup-container {
@@ -68,8 +66,8 @@
 }
 
 .popup-content-wrapper {
-  overflow-y: auto;
   height: calc(100% - 50px);
+  overflow-y: auto;
 }
 
 .popup-content {

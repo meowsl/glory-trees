@@ -38,6 +38,7 @@ import GpwMark from "images/gpw_mark.png"
 import SvoMark from "images/svo_mark.png"
 import CloseIcon from "images/close_icon.svg"
 import GpwStar from "images/gpw_star.svg"
+import SvoZ from "images/svo_z.svg"
 
 const { getHeroList } = useHero()
 
@@ -86,18 +87,6 @@ async function initMap() {
   popupContainer.className = 'custom-popup-container';
   mapInstance.getContainer().appendChild(popupContainer);
 
-  let isTouchingPopup = false;
-
-  popupContainer.addEventListener('touchstart', () => {
-    isTouchingPopup = true;
-  });
-
-  mapInstance.addEventListener('touchend', () => {
-    if (!isTouchingPopup) {
-      closePopup();
-    }
-  });
-
   function closePopup() {
     popupContainer.style.display = 'none';
   }
@@ -120,34 +109,34 @@ async function initMap() {
         closeButton.addEventListener('click', closePopup);
 
         const popupContent = `
-          <div class="popup-container">
-            <div class="popup-header row justify-center text-subtitle2 items-center q-pa-sm">
-              <div class="popup-title row items-center">
-                <img src="${GpwStar}" class="popup-title__star q-px-sm">
-                <p class="text-center">Герой ВОВ</p>
+        <div class="popup-container">
+        <div class="popup-header row justify-center text-subtitle2 items-center q-pa-sm">
+          <div class="popup-title row items-center">
+            <img src="${hero.event === 1 ? GpwStar : SvoZ}" class="popup-title__star q-px-sm">
+        <p class="text-center">${hero.event === 1 ? 'Герой ВОВ' : 'Герой СВО'}</p>
+            </div>
+          <div class="custom-popup-close-button-container">
+            <button class="custom-popup-close-button row justify-center items-center"><img src="${CloseIcon}" alt="Close"></button>
+          </div>
+        </div>
+          <div class="popup-content column text-white">
+            <div class="row">
+              <div class="popup-image">
+                <img src="${hero.photo}" alt="${hero.firstname}">
               </div>
-              <div class="custom-popup-close-button-container">
-                <button class="custom-popup-close-button row justify-center items-center"><img src="${CloseIcon}" alt="Close"></button>
+              <div class="popup-info">
+                <div class="popup-name">${hero.lastname} ${hero.firstname} ${hero.midname}, ${hero.birthday} - ${hero.deathdate}</div>
+                <div class="popup-birth text-subtitle2">Место рождения: ${hero.birthPlace}</div>
+                <div class="popup-rank q-mt-sm text-subtitle2">
+                  Звание: ${hero.rank}
+                </div>
               </div>
             </div>
-            <div class="popup-content column text-white">
-              <div class="row">
-                <div class="popup-image">
-                  <img src="${hero.photo}" alt="${hero.firstname}">
-                </div>
-                <div class="popup-info">
-                  <div class="popup-name">${hero.lastname} ${hero.firstname} ${hero.midname}, ${hero.birthday} - ${hero.deathdate}</div>
-                  <div class="popup-birth text-subtitle2">Место рождения: ${hero.birthPlace}</div>
-                  <div class="popup-rank q-mt-sm text-subtitle2">
-                    Звание: ${hero.rank}
-                  </div>
-                </div>
-              </div>
-              <div class="popup-feat q-mt-sm text-subtitle2">
-                ${hero.feat}
-              </div>
+            <div class="popup-feat q-mt-sm text-subtitle2">
+              ${hero.feat}
             </div>
           </div>
+        </div>
         `;
 
         marker.on('click', () => {
