@@ -6,21 +6,29 @@
     ></div>
     <p class="map__sources text-white text-subtitle2 q-mt-lg">Источники:</p>
     <div class="row sources links text-white text-subtitle2 q-mt-sm justify-start">
-      <a href="https://mpomos.ru/heroes">
+      <a
+        href="https://mpomos.ru/heroes"
+        target="_blank"
+      >
         <p>mpomos.ru/heroes</p>
       </a>
       <a
         class="q-px-md"
         href="https://pamyat-naroda.ru/"
+        target="_blank"
       >
         <p>pamyat-naroda.ru</p>
       </a>
-      <a href="https://warheroes.ru/">
+      <a
+        href="https://warheroes.ru/"
+        target="_blank"
+      >
         <p>warheroes.ru</p>
       </a>
       <a
         class="q-px-md"
         href="https://poisk.re/"
+        target="_blank"
       >
         <p>poisk.re</p>
       </a>
