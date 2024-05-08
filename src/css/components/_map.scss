@@ -8,10 +8,9 @@
   display: none !important;
 }
 
-// Стили информации меток
-
 .popup-content {
   display: flex;
+  position: relative;
 }
 
 .popup-image {
@@ -41,7 +40,7 @@
 }
 
 .custom-popup-container {
-  position: absolute;
+  position: relative;
   top: 10px;
   left: 10px;
   background-color: rgba(0, 0, 0, 1);
@@ -49,7 +48,28 @@
   z-index: 1000;
   color: #fff;
   max-width: 550px;
+  max-height: 65%;
+  overflow-y: auto;
   border: #841818 3px solid;
+  pointer-events: auto;
+}
+
+.popup-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+
+  &>.popup-header {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+  }
+}
+
+.popup-content-wrapper {
+  overflow-y: auto;
+  height: calc(100% - 50px);
 }
 
 .popup-content {
@@ -84,7 +104,6 @@
   cursor: pointer;
   font-size: 16px;
 }
-
 
 @media (max-width: 1024px) {
 

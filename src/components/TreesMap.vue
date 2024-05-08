@@ -4,13 +4,27 @@
       ref="map"
       class="map"
     ></div>
-    <p class="map__sources text-white text-subtitle2 q-mt-lg">какой-то текст про источники информации какой-то текст про
-      источники
-      информации
-      какой-то текст
-      про источники
-      информациикакой-то текст про источники информациикакой-то текст про источники информации какой-то текст про
-      источники информациикакой-то текст про источники информации</p>
+    <p class="map__sources text-white text-subtitle2 q-mt-lg">Источники:</p>
+    <div class="row sources links text-white text-subtitle2 q-mt-sm justify-start">
+      <a href="https://mpomos.ru/heroes">
+        <p>mpomos.ru/heroes</p>
+      </a>
+      <a
+        class="q-px-md"
+        href="https://pamyat-naroda.ru/"
+      >
+        <p>pamyat-naroda.ru</p>
+      </a>
+      <a href="https://warheroes.ru/">
+        <p>warheroes.ru</p>
+      </a>
+      <a
+        class="q-px-md"
+        href="https://poisk.re/"
+      >
+        <p>poisk.re</p>
+      </a>
+    </div>
   </div>
 </template>
 
@@ -24,7 +38,6 @@ import GpwMark from "images/gpw_mark.png"
 import SvoMark from "images/svo_mark.png"
 import CloseIcon from "images/close_icon.svg"
 import GpwStar from "images/gpw_star.svg"
-
 
 const { getHeroList } = useHero()
 
@@ -73,6 +86,18 @@ async function initMap() {
   popupContainer.className = 'custom-popup-container';
   mapInstance.getContainer().appendChild(popupContainer);
 
+  let isTouchingPopup = false;
+
+  popupContainer.addEventListener('touchstart', () => {
+    isTouchingPopup = true;
+  });
+
+  mapInstance.addEventListener('touchend', () => {
+    if (!isTouchingPopup) {
+      closePopup();
+    }
+  });
+
   function closePopup() {
     popupContainer.style.display = 'none';
   }
@@ -95,30 +120,32 @@ async function initMap() {
         closeButton.addEventListener('click', closePopup);
 
         const popupContent = `
-        <div class="popup-header row justify-center text-subtitle2 items-center q-pa-sm">
-          <div class="popup-title row items-center">
-            <img src="${GpwStar}" class="popup-title__star q-px-sm">
-            <p class="text-center">Герой ВОВ</p>
-            </div>
-          <div class="custom-popup-close-button-container">
-            <button class="custom-popup-close-button row justify-center items-center"><img src="${CloseIcon}" alt="Close"></button>
-          </div>
-            </div>
-          <div class="popup-content column text-white">
-            <div class="row">
-              <div class="popup-image">
-                <img src="${hero.photo}" alt="${hero.firstname}">
+          <div class="popup-container">
+            <div class="popup-header row justify-center text-subtitle2 items-center q-pa-sm">
+              <div class="popup-title row items-center">
+                <img src="${GpwStar}" class="popup-title__star q-px-sm">
+                <p class="text-center">Герой ВОВ</p>
               </div>
-              <div class="popup-info">
-                <div class="popup-name">${hero.lastname} ${hero.firstname} ${hero.midname}, ${hero.birthday} - ${hero.deathdate}</div>
-                <div class="popup-birth text-subtitle2">Место рождения: ${hero.birthPlace}</div>
-                <div class="popup-rank q-mt-sm text-subtitle2">
-                  Звание: ${hero.rank}
+              <div class="custom-popup-close-button-container">
+                <button class="custom-popup-close-button row justify-center items-center"><img src="${CloseIcon}" alt="Close"></button>
+              </div>
+            </div>
+            <div class="popup-content column text-white">
+              <div class="row">
+                <div class="popup-image">
+                  <img src="${hero.photo}" alt="${hero.firstname}">
+                </div>
+                <div class="popup-info">
+                  <div class="popup-name">${hero.lastname} ${hero.firstname} ${hero.midname}, ${hero.birthday} - ${hero.deathdate}</div>
+                  <div class="popup-birth text-subtitle2">Место рождения: ${hero.birthPlace}</div>
+                  <div class="popup-rank q-mt-sm text-subtitle2">
+                    Звание: ${hero.rank}
+                  </div>
                 </div>
               </div>
-            </div>
-            <div class="popup-feat q-mt-sm text-subtitle2">
-              ${hero.feat}
+              <div class="popup-feat q-mt-sm text-subtitle2">
+                ${hero.feat}
+              </div>
             </div>
           </div>
         `;
