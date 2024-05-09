@@ -10,5 +10,5 @@ export interface Hero {
   deathdate: string | Date
   gravePlace: string
   rank: string
-  feat: Text | undefined
+  feat: string | null
 }

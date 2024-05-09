@@ -70,6 +70,8 @@ import SvoMark from "images/svo_mark.png"
 import CloseIcon from "images/close_icon.svg"
 import GpwStar from "images/gpw_star.svg"
 import SvoZ from "images/svo_z.svg"
+import ArrowLeft from "images/arrow-left.svg"
+import ArrowRight from "images/arrow-right.svg"
 
 const { getHeroList } = useHero()
 
@@ -122,10 +124,17 @@ async function initMap() {
     popupContainer.style.display = 'none';
   }
 
+  const heroesByCoordinates: Record<string, Hero[]> = {};
+
   for (const hero of heroes.value) {
     try {
       const coordinates = await geocodeAddress(hero.gravePlace);
       if (coordinates) {
+        if (!heroesByCoordinates[coordinates.lat + ',' + coordinates.lon]) {
+          heroesByCoordinates[coordinates.lat + ',' + coordinates.lon] = [];
+        }
+        heroesByCoordinates[coordinates.lat + ',' + coordinates.lon].push(hero);
+
         const marker = L.marker([coordinates.lat, coordinates.lon]);
 
         if (hero.event === 1) {
@@ -134,56 +143,138 @@ async function initMap() {
           marker.setIcon(customIcons.svo);
         }
 
-        const closeButton = document.createElement('button');
-        closeButton.className = 'custom-popup-close-button';
-        closeButton.innerHTML = `<img src="${CloseIcon}" alt="Close">`;
-        closeButton.addEventListener('click', closePopup);
-
-        const popupContent = `
-        <div class="popup-container">
-        <div class="popup-header row justify-center text-subtitle2 items-center q-pa-sm">
-          <div class="popup-title row items-center">
-            <img src="${hero.event === 1 ? GpwStar : SvoZ}" class="popup-title__star q-px-sm">
-        <p class="text-center">${hero.event === 1 ? 'Герой ВОВ' : 'Герой СВО'}</p>
-            </div>
-          <div class="custom-popup-close-button-container">
-            <button class="custom-popup-close-button row justify-center items-center"><img src="${CloseIcon}" alt="Close"></button>
-          </div>
-        </div>
-          <div class="popup-content column text-white">
-            <div class="row">
-              <div class="popup-image">
-                <img src="${hero.photo}" alt="${hero.firstname}">
-              </div>
-              <div class="popup-info">
-                <div class="popup-name">${hero.lastname} ${hero.firstname} ${hero.midname}, ${hero.birthday} - ${hero.deathdate}</div>
-                <div class="popup-birth text-subtitle2">Место рождения: ${hero.birthPlace}</div>
-                <div class="popup-rank q-mt-sm text-subtitle2">
-                  Звание: ${hero.rank}
-                </div>
-              </div>
-            </div>
-            <div class="popup-feat q-mt-sm text-subtitle2">
-              ${hero.feat}
-            </div>
-          </div>
-        </div>
-        `;
-
         marker.on('click', () => {
-          popupContainer.innerHTML = popupContent;
-          popupContainer.style.display = 'block';
-          popupContainer.style.top = '10px';
-          popupContainer.style.left = '10px';
-          const closeButtonInPopup = popupContainer.querySelector('.custom-popup-close-button');
-          if (closeButtonInPopup) {
-            closeButtonInPopup.addEventListener('click', closePopup);
-          }
+          showPopup(heroesByCoordinates[coordinates.lat + ',' + coordinates.lon]);
         });
         marker.addTo(mapInstance);
       }
     } catch (error) {
       console.error(error);
+    }
+  }
+
+  let currentHeroIndex = 0;
+
+  function showPopup(heroes: Hero[]) {
+
+    let popupContent = `
+    <div class="popup-container">
+      <div class="popup-header row justify-center text-subtitle2 items-center q-pa-sm">
+        <div class="popup-title row items-center">
+          <img src="" class="popup-title__star q-px-sm">
+          <p class="text-center popup-title__text"></p>
+        </div>
+        <div class="custom-popup-close-button-container">
+          <button class="custom-popup-close-button row justify-center items-center"><img src="${CloseIcon}" alt="Close"></button>
+        </div>
+      </div>
+      <div class="popup-content column text-white">
+  `;
+
+    let imageSource = '';
+    let titleText = '';
+
+    if (heroes[currentHeroIndex].event === 1) {
+      imageSource = GpwStar;
+      titleText = 'Герой ВОВ';
+    } else if (heroes[currentHeroIndex].event === 2) {
+      imageSource = SvoZ;
+      titleText = 'Герой СВО';
+    }
+
+    popupContent += `
+    <div class="popup-card">
+      <div class="row">
+        <div class="popup-image">
+          <img src="${heroes[currentHeroIndex].photo}" alt="${heroes[currentHeroIndex].firstname}">
+        </div>
+        <div class="popup-info">
+          <div class="popup-name">${heroes[currentHeroIndex].lastname} ${heroes[currentHeroIndex].firstname} ${heroes[currentHeroIndex].midname}, ${heroes[currentHeroIndex].birthday} - ${heroes[currentHeroIndex].deathdate}</div>
+          <div class="popup-birth text-subtitle2">Место рождения: ${heroes[currentHeroIndex].birthPlace}</div>
+          <div class="popup-rank q-mt-sm text-subtitle2">
+            Звание: ${heroes[currentHeroIndex].rank}
+          </div>
+        </div>
+      </div>
+      <div class="popup-feat q-mt-sm text-subtitle2">
+        ${heroes[currentHeroIndex].feat}
+      </div>
+    </div>
+  `;
+
+    let navigationButtons = '';
+
+    if (heroes.length > 1) {
+      navigationButtons = `
+        <div class="custom-popup-navigation row justify-between">
+          <button class="custom-popup-prev-button"><img class="custom-popup-prev-button__image" src="${ArrowLeft}" alt="Предыдущий"></button>
+          <button class="custom-popup-next-button"><img class="custom-popup-next-button__image" src="${ArrowRight}" alt="Следующий"></button>
+        </div>
+      `;
+    }
+
+    popupContent += `
+        ${navigationButtons}
+      </div>
+    </div>
+    `;
+
+    popupContainer.innerHTML = popupContent;
+    popupContainer.style.display = 'block';
+    popupContainer.style.top = '10px';
+    popupContainer.style.left = '10px';
+
+    const closeButtonInPopup = popupContainer.querySelector('.custom-popup-close-button');
+    if (closeButtonInPopup) {
+      closeButtonInPopup.addEventListener('click', closePopup);
+    }
+
+    if (heroes.length > 1) {
+      const prevButton = popupContainer.querySelector('.custom-popup-prev-button');
+      const nextButton = popupContainer.querySelector('.custom-popup-next-button');
+
+      if (prevButton && nextButton) {
+        prevButton.addEventListener('click', () => {
+          currentHeroIndex = (currentHeroIndex - 1 + heroes.length) % heroes.length;
+          updatePopupContent(heroes[currentHeroIndex]);
+        });
+
+        nextButton.addEventListener('click', () => {
+          currentHeroIndex = (currentHeroIndex + 1) % heroes.length;
+          updatePopupContent(heroes[currentHeroIndex]);
+        });
+      }
+    }
+
+    const popupTitleStar = popupContainer.querySelector('.popup-title__star') as HTMLImageElement;
+    const popupTitleText = popupContainer.querySelector('.popup-title__text');
+
+    if (popupTitleStar && popupTitleText) {
+      popupTitleStar.src = imageSource;
+      popupTitleText.textContent = titleText;
+    }
+  }
+
+  function updatePopupContent(hero: Hero) {
+    const popupImage = popupContainer.querySelector('.popup-image img') as HTMLImageElement;
+    const popupName = popupContainer.querySelector('.popup-name');
+    const popupBirth = popupContainer.querySelector('.popup-birth');
+    const popupRank = popupContainer.querySelector('.popup-rank');
+    const popupFeat = popupContainer.querySelector('.popup-feat');
+
+    if (popupImage && popupName && popupBirth && popupRank && popupFeat) {
+      let photoUrl = '';
+      if (typeof hero.photo === 'string') {
+        photoUrl = hero.photo;
+      } else if (hero.photo instanceof File) {
+        photoUrl = URL.createObjectURL(hero.photo);
+      }
+      popupImage.src = photoUrl;
+      popupImage.alt = hero.firstname ? hero.firstname : '';
+      popupName.textContent = `${hero.lastname} ${hero.firstname} ${hero.midname}, ${hero.birthday} - ${hero.deathdate} `;
+      popupBirth.textContent = `Место рождения: ${hero.birthPlace} `;
+      popupRank.textContent = `Звание: ${hero.rank} `;
+      popupFeat.textContent = hero.feat ? hero.feat : '';
     }
   }
 }

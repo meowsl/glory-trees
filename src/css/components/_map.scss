@@ -83,6 +83,35 @@
   font-size: 16px;
 }
 
+.popup-card {
+  margin-bottom: 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  padding-bottom: 1rem;
+}
+
+.popup-card:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.custom-popup-prev-button {
+  max-width: 3rem;
+  background-color: #841818;
+
+  &__image {
+    max-width: 50%;
+  }
+}
+
+.custom-popup-next-button {
+  max-width: 3rem;
+  background-color: #841818;
+
+  &__image {
+    max-width: 50%;
+  }
+}
+
 @media (max-width: 1024px) {
 
   .popup-image {
