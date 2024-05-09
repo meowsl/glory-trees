@@ -1,0 +1,19 @@
+.mate-card{
+  max-width: 150px;
+  max-height: auto;
+
+  &>.text-subtitle1{
+    text-wrap: nowrap;
+  }
+
+  &__photo{
+    border: 3px solid #841818 !important;
+  }
+}
+
+
+@media (max-width:960px){
+  .mate-card{
+    margin-bottom: 2rem;
+  }
+}

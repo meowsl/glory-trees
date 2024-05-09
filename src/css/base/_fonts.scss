@@ -1,48 +1,23 @@
 @charset 'UTF-8';
 
-// Montserrat
-@include font-face(
-  'Montserrat',
-  'Montserrat/Montserrat-Thin.ttf',
-  $weight: 100
-);
-@include font-face(
-  'Montserrat',
-  'Montserrat/Montserrat-ExtraLight.ttf',
-  $weight: 200
-);
-@include font-face(
-  'Montserrat',
-  'Montserrat/Montserrat-Light.ttf',
-  $weight: 300
-);
-@include font-face(
-  'Montserrat',
-  'Montserrat/Montserrat-Regular.ttf',
-  $weight: 400
-);
-@include font-face(
-  'Montserrat',
-  'Montserrat/Montserrat-Medium.ttf',
-  $weight: 500
-);
-@include font-face(
-  'Montserrat',
-  'Montserrat/Montserrat-SemiBold.ttf',
-  $weight: 600
-);
-@include font-face(
-  'Montserrat',
-  'Montserrat/Montserrat-Bold.ttf',
-  $weight: 700
-);
-@include font-face(
-  'Montserrat',
-  'Montserrat/Montserrat-ExtraBold.ttf',
-  $weight: 800
-);
-@include font-face(
-  'Montserrat',
-  'Montserrat/Montserrat-Black.ttf',
-  $weight: 900
-);
+
+// Manrope
+@include font-face('Manrope-Light',
+  'Manrope/Manrope-Light.ttf',
+  $weight: 300);
+
+@include font-face('Manrope',
+  'Manrope/Manrope-Regular.ttf',
+  $weight: 400);
+
+@include font-face('Manrope-Medium',
+  'Manrope/Manrope-Medium.ttf',
+  $weight: 500);
+
+@include font-face('Manrope-SemiBold',
+  'Manrope/Manrope-SemiBold.ttf',
+  $weight: 600);
+
+@include font-face('Manrope-Bold',
+  'Manrope/Manrope-Bold.ttf',
+  $weight: 700);

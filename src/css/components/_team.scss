@@ -1,0 +1,100 @@
+.team {
+  font-family: "Manrope";
+  width: 100%;
+
+  &__title {
+    font-size: 70px;
+  }
+
+  &__image {
+    max-width: 100%;
+    left: 0;
+    top: 150px;
+    position: absolute;
+    z-index: -1;
+  }
+
+  &__list {
+    margin-top: 3rem;
+  }
+}
+
+.text-body1 li::marker {
+  font-weight: bold;
+  font-size: 20px;
+  color: #841818;
+}
+
+ul {
+  list-style-position: inside;
+  padding-left: 0;
+}
+
+@media (max-width:1440px) {
+  .team {
+
+    &__title {
+      font-size: 60px;
+    }
+
+    &__list {
+      margin-bottom: 10rem;
+    }
+  }
+}
+
+@media (max-width:1024px) {
+  .team {
+
+    &__title {
+      font-size: 48px;
+    }
+
+    &__image {
+      display: none;
+    }
+
+    &__list {
+      background-image: url('src/assets/images/team_background_small.svg');
+      background-repeat: no-repeat;
+      background-size: cover;
+      width: 100%;
+      padding: 3rem 0;
+      margin-top: 0;
+      margin-bottom: 0;
+
+      &>ul {
+        margin-top: 10rem;
+      }
+    }
+  }
+}
+
+@media (max-width:960px) {
+  .team {
+
+    &__title {
+      font-size: 36px;
+    }
+
+    &__list{
+      padding: 2rem 0;
+    }
+  }
+}
+
+@media (max-width:660px) {
+  .team {
+
+    &__title {
+      font-size: 24px;
+    }
+
+    &__list {
+
+      &>ul {
+        margin-top: 6rem;
+      }
+    }
+  }
+}

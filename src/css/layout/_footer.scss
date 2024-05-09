@@ -1,1 +1,39 @@
 @charset 'UTF-8';
+
+.footer{
+  background-image: url('src/assets/images/noise.svg');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+@media (max-width:1024px){
+  .footer{
+
+    padding-left: 0;
+    padding-right: 0;
+    &__contact{
+      text-align: center;
+      padding-bottom: 2rem;
+    }
+  }
+}
+
+@media (max-width:660px){
+  .footer{
+
+    &__links{
+
+      &>a{
+        display: flex;
+        justify-content: center;
+        max-width: 25%;
+      }
+
+      &>a>img{
+
+        height: auto;
+        width: 80%;
+      }
+    }
+  }
+}

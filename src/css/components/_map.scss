@@ -1,0 +1,161 @@
+.map {
+  height: 85vh;
+  width: 100%;
+}
+
+.leaflet-bottom,
+.leaflet-right {
+  display: none !important;
+}
+
+.popup-content {
+  display: flex;
+}
+
+.popup-image {
+  flex: 1;
+  margin-right: 10px;
+  max-width: 7rem;
+
+  &>img {
+    max-width: 100%;
+    height: auto;
+  }
+}
+
+.popup-info {
+  flex: 2;
+}
+
+.popup-name {
+  font-family: "Manrope-Bold";
+  font-size: 16px;
+  margin-bottom: 5px;
+}
+
+.popup-birth {
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.custom-popup-container {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background-color: rgba(0, 0, 0, 1);
+  display: none;
+  z-index: 1000;
+  color: #fff;
+  max-width: 550px;
+  border: #841818 3px solid;
+}
+
+.popup-content {
+  padding: 1rem;
+}
+
+.popup-header {
+  background-color: #222222;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.8rem;
+}
+
+.popup-title {
+
+  &__star {
+    min-width: 15px;
+    min-height: 15px;
+    margin-bottom: 3px;
+  }
+}
+
+.custom-popup-close-button-container {
+  cursor: pointer;
+}
+
+.custom-popup-close-button {
+  background-color: transparent;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.popup-card {
+  margin-bottom: 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  padding-bottom: 1rem;
+}
+
+.popup-card:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.custom-popup-prev-button {
+  max-width: 3rem;
+  background-color: #841818;
+
+  &__image {
+    max-width: 50%;
+  }
+}
+
+.custom-popup-next-button {
+  max-width: 3rem;
+  background-color: #841818;
+
+  &__image {
+    max-width: 50%;
+  }
+}
+
+@media (max-width: 1024px) {
+
+  .popup-image {
+    max-width: 6rem;
+  }
+
+  .popup-name {
+    font-size: 14px;
+  }
+
+  .popup-birth {
+    font-size: 12px;
+    line-height: 1;
+  }
+
+  .popup-rank {
+    font-size: 12px;
+  }
+
+  .custom-popup-container {
+    max-width: 450px;
+  }
+}
+
+@media (max-width: 960px) {
+
+  .map {
+
+    &__sources {
+      font-size: 12px;
+    }
+  }
+
+  .popup-image {
+    max-width: 4rem;
+  }
+
+  .custom-popup-container {
+    max-width: 350px;
+  }
+}
+
+@media (max-width: 660px) {
+  .custom-popup-container {
+    max-width: 305px;
+  }
+}

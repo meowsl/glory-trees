@@ -9,8 +9,8 @@
       content="width=device-width, initial-scale=1, shrink-to-fit=no"
     />
     <title>
-      {% block title %}{% comment %} TODO title {% endcomment %}{% endblock
-      title %}
+      {% block title %}{% comment %} TODO title {% endcomment %}
+      {% endblock title %}
     </title>
     {% block head %} {% block links %} {% endblock links %} {% endblock head %}
   </head>
@@ -21,7 +21,6 @@
       <main class="main">{% block content %} {% endblock content %}</main>
       <footer class="footer">{% block footer %} {% endblock footer %}</footer>
     </div>
-    {% block bottom %} {% block scripts %} {% endblock scripts %} {% endblock
-    bottom %}
+    {% block bottom %} {% block scripts %} {% endblock scripts %} {% endblock bottom %}
   </body>
 </html>
