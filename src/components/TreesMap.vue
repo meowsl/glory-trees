@@ -273,7 +273,7 @@ async function initMap() {
       popupImage.alt = hero.firstname ? hero.firstname : '';
       popupName.textContent = `${hero.lastname} ${hero.firstname} ${hero.midname}, ${hero.birthday} - ${hero.deathdate} `;
       popupBirth.textContent = `Место рождения: ${hero.birthPlace} `;
-      popupRank.textContent = `Звание: ${hero.rank} `;
+      popupRank.textContent = `Звание: ${hero.rank ? hero.rank : 'неизвестно'} `;
       popupFeat.textContent = hero.feat ? hero.feat : '';
     }
   }
