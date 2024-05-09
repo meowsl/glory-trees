@@ -192,7 +192,7 @@ async function initMap() {
           <div class="popup-name">${heroes[currentHeroIndex].lastname} ${heroes[currentHeroIndex].firstname} ${heroes[currentHeroIndex].midname}, ${heroes[currentHeroIndex].birthday} - ${heroes[currentHeroIndex].deathdate}</div>
           <div class="popup-birth text-subtitle2">Место рождения: ${heroes[currentHeroIndex].birthPlace}</div>
           <div class="popup-rank q-mt-sm text-subtitle2">
-            Звание: ${heroes[currentHeroIndex].rank}
+            Звание: ${heroes[currentHeroIndex].rank ? heroes[currentHeroIndex].rank : 'неизвестно'}
           </div>
         </div>
       </div>
