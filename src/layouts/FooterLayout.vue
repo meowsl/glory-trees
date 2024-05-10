@@ -2,12 +2,14 @@
   <div class="footer q-px-xl q-py-lg justify-end">
     <div class="row">
       <div class="footer__contact col-12 col-md-7">
-        <span class="tooltiptext">Информация должна пройти модерацию, прежде чем будет высажено дерево</span>
-        <p class="text-white">Если хотите рассказать о герое и посадить его дерево, <br>
-          свяжитесь с нами по почте <a
+        <span class="footer__contact-text text-white">
+          Если хотите рассказать о герое и посадить его дерево, <br>
+          свяжитесь с нами по почте<a
             href="mailto:geroi@rsue.ru"
             target="_blank"
-          >geroi@rsue.ru</a></p>
+          > geroi@rsue.ru</a>
+          <span class="tooltiptext">Информация должна пройти модерацию, прежде чем будет высажено дерево</span>
+        </span>
       </div>
       <div class="footer__links col-12 col-md-5 row justify-around">
         <a
