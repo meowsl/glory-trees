@@ -1,35 +1,67 @@
 @charset 'UTF-8';
 
-.footer{
+.footer {
   background-image: url('src/assets/images/noise.svg');
   background-repeat: no-repeat;
   background-size: cover;
 }
 
-@media (max-width:1024px){
-  .footer{
+.footer__contact {
+  position: relative;
+  cursor: help;
+}
+
+.tooltiptext {
+  font-size: 12px;
+  visibility: hidden;
+  width: auto;
+  background-color: #555;
+  color: #fff;
+  text-align: center;
+  padding: 5px 10px;
+  border-radius: 6px;
+  position: absolute;
+  z-index: 1;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.footer__contact:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
+}
+
+@media (max-width:1024px) {
+  .footer {
 
     padding-left: 0;
     padding-right: 0;
-    &__contact{
+
+    &__contact {
       text-align: center;
       padding-bottom: 2rem;
     }
   }
+
 }
 
-@media (max-width:660px){
-  .footer{
+@media (max-width: 960px) {}
 
-    &__links{
+@media (max-width:660px) {
+  .footer {
 
-      &>a{
+    &__links {
+
+      &>a {
         display: flex;
         justify-content: center;
         max-width: 25%;
       }
 
-      &>a>img{
+      &>a>img {
 
         height: auto;
         width: 80%;
