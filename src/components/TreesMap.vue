@@ -4,7 +4,7 @@
       ref="map"
       class="map"
     ></div>
-    <p class="map__sources text-white text-subtitle2 q-mt-lg">Источники:</p>
+    <p class="map__sources text-white text-subtitle1 q-mt-lg text-bold">Источники:</p>
     <div class="row sources links text-white text-subtitle2 q-mt-sm justify-start">
       <a
         class="q-pr-md"
