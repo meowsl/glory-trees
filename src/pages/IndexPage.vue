@@ -7,6 +7,7 @@
     <SoldierApp />
     <QuizApp />
     <TeamApp />
+    <TestMap />
   </q-page>
 </template>
 
@@ -18,4 +19,5 @@ import TreesMap from 'src/components/TreesMap.vue';
 import SoldierApp from 'src/components/SoldierApp.vue';
 import QuizApp from 'src/components/QuizApp.vue';
 import TeamApp from 'src/components/TeamApp.vue';
+import TestMap from 'src/components/TestMap.vue';
 </script>
