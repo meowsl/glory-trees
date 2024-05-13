@@ -44,30 +44,12 @@
       <div class="hero-card__feat q-mt-sm text-subtitle2">
         {{ hero.feat }}
       </div>
-      <div
-        class="hero-buttons"
-        v-if="heroes.length > 1"
-      >
-        <button
-          :disabled="heroIndex === 0"
-          @click="heroIndex--"
-        >
-          Предыдущий
-        </button>
-        <button
-          :disabled="heroIndex === heroes.length - 1"
-          @click="heroIndex++"
-        >
-          Следующий
-        </button>
-      </div>
     </div>
-
   </div>
 </template>
 
 <script setup lang="ts">
-import { defineProps, ref, PropType } from 'vue';
+import { PropType } from 'vue';
 import { Hero } from 'models';
 import GpwStar from "images/gpw_star.svg"
 import SvoZ from "images/svo_z.svg"
@@ -78,12 +60,11 @@ const props = defineProps({
     type: Object as PropType<Hero>,
     required: true,
   },
-  heroes: {
-    type: Array as PropType<Hero[]>,
-    required: true,
-  },
 });
 
-const heroIndex = ref(0);
+const emit = defineEmits(['close']);
 
+function close() {
+  emit('close');
+}
 </script>

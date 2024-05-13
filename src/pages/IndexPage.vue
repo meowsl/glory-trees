@@ -3,12 +3,11 @@
     <BannerApp />
     <CarouselApp />
     <AboutApp />
-    <!-- <TreesMap /> -->
-    <TestMap />
+    <TreesMap />
     <SoldierApp />
     <QuizApp />
     <TeamApp />
-    <!-- <TestMap /> -->
+    <TestMap />
   </q-page>
 </template>
 
