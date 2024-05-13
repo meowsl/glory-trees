@@ -8,17 +8,68 @@
   padding: 10px 20px;
   white-space: nowrap;
 
-  &__image{
+  &__image {
     max-height: 50px;
     max-width: 30px;
   }
 }
 
 .hero-info {
-  position: absolute; /* Изменяем position на absolute */
-  top: 2.5rem; /* Расстояние от верхнего края */
-  left: 2.5rem; /* Расстояние от левого края */
+  position: absolute;
+  /* Изменяем position на absolute */
+  top: 2.5rem;
+  /* Расстояние от верхнего края */
+  left: 2.5rem;
+  /* Расстояние от левого края */
   padding: 0;
   z-index: 1000;
   max-width: 550px;
+}
+
+.hero-slider__controls {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.7rem;
+  background-color: black;
+  border: #841818 3px solid;
+  border-top: none;
+
+  &>.hero-slider__control {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #841818;
+    border: none;
+    border-radius: 50%;
+    font-size: 24px;
+    color: white;
+    width: 30px;
+    height: 30px;
+  }
+}
+
+.hero-slide {
+  display: none;
+}
+
+.hero-slide--active {
+  display: block;
+}
+
+@media (max-width: 1024px) {
+  .hero-info {
+    max-width: 450px;
+  }
+}
+
+@media (max-width: 960px) {
+  .hero-info {
+    max-width: 350px;
+  }
+}
+
+@media (max-width: 660px) {
+  .hero-info {
+    max-width: 305px;
+  }
 }

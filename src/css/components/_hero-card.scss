@@ -5,31 +5,34 @@
   z-index: 1000;
   color: #fff;
   max-width: 550px;
+  max-height: auto;
   border: #841818 3px solid;
+  border-bottom: rgb(255, 255, 255, 0.3) 1px solid;
 
-  &__header{
+  &__header {
     background-color: #222222;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 0.8rem;
 
-    &> .title{
+    &>.title {
 
-      &> .mark{
+      &>.mark {
         max-width: 15px;
         max-height: 15px;
       }
-      &> .text{
+
+      &>.text {
         margin-left: 0.8rem;
       }
     }
 
-    &> .close-action{
+    &>.close-action {
       cursor: pointer;
       background-color: transparent;
 
-      &> .button{
+      &>.button {
         background-color: transparent;
         border: none;
         color: #fff;
@@ -39,11 +42,11 @@
     }
   }
 
-  &__content{
+  &__content {
     display: flex;
     padding: 1rem;
 
-    &> .row > .photo{
+    &>.row>.photo {
       flex: 1;
       margin-right: 10px;
       max-width: 7rem;
@@ -54,30 +57,30 @@
       }
     }
 
-    &> .row > .info{
+    &>.row>.info {
       flex: 2;
 
-      &> .fullname{
+      &>.fullname {
         font-family: "Manrope-Bold" !important;
         font-size: 16px;
         margin-bottom: 5px;
       }
 
-      &> .birth-place{
+      &>.birth-place {
         font-size: 14px;
         line-height: 1.5;
       }
     }
   }
 
-  &__photo{
+  &__photo {
     width: 100px;
     height: 100px;
     border-radius: 50%;
     object-fit: cover;
   }
 
-  &__close-btn{
+  &__close-btn {
     background-color: dodgerblue;
     border: none;
     color: white;
@@ -85,5 +88,23 @@
     border-radius: 5px;
     cursor: pointer;
     margin-top: 10px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .hero-card {
+    max-width: 450px;
+  }
+}
+
+@media (max-width: 960px) {
+  .hero-card {
+    max-width: 350px;
+  }
+}
+
+@media (max-width: 660px) {
+  .hero-card {
+    max-width: 305px;
   }
 }

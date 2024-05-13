@@ -29,22 +29,38 @@
             :src="marker.icon"
           >
         </div>
-
       </yandex-map-marker>
     </yandex-map>
     <div
       class="hero-info"
       v-if="openMarker"
     >
-      <div
-        class="hero-card"
-        v-for="(hero, index) in openMarker.heroes"
-        :key="index"
-      >
-        <HeroCard
-          :hero="hero"
-          @close="openMarker = null"
-        />
+      <div class="hero-slider">
+        <div
+          class="hero-slide"
+          v-for="(hero, index) in openMarker.heroes"
+          :key="index"
+          :class="{ 'hero-slide--active': currentSlide === index }"
+        >
+          <HeroCard
+            :hero="hero"
+            @close="openMarker = null"
+          />
+        </div>
+        <div class="hero-slider__controls">
+          <button
+            class="hero-slider__control hero-slider__control--prev"
+            @click="prevSlide"
+          >
+            &lt;
+          </button>
+          <button
+            class="hero-slider__control hero-slider__control--next"
+            @click="nextSlide"
+          >
+            &gt;
+          </button>
+        </div>
       </div>
     </div>
     <p class="map__sources text-white text-subtitle1 q-mt-lg text-bold">Источники:</p>
@@ -97,6 +113,7 @@
 
 <script setup lang="ts">
 import { shallowRef, ref, onMounted } from 'vue';
+import { QCarousel, QCarouselSlide } from 'quasar'
 import {
   YandexMap,
   YandexMapDefaultSchemeLayer,
@@ -111,9 +128,9 @@ import { Hero } from 'models';
 import HeroCard from './HeroCard.vue';
 import GpwMark from "images/gpw_mark.png"
 import SvoMark from "images/svo_mark.png"
+import ArrowLeft from "images/arrow-left.svg"
 
 const { getHeroList } = useHero()
-
 
 const heroes = ref<Hero[]>([])
 
@@ -189,6 +206,16 @@ async function initMap() {
 
 const openMarker = ref<null | { index: number; heroes: Hero[] }>(null)
 
+const currentSlide = ref(0);
+
+function prevSlide() {
+  currentSlide.value = (currentSlide.value - 1 + openMarker.value?.heroes.length) % openMarker.value?.heroes.length;
+}
+
+function nextSlide() {
+  currentSlide.value = (currentSlide.value + 1) % openMarker.value?.heroes.length;
+}
+
 onMounted(() => {
   getData();
   const options = createYmapsOptions({
@@ -196,5 +223,4 @@ onMounted(() => {
   });
   initYmaps(options);
 });
-
 </script>
