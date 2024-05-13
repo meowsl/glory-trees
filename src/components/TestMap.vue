@@ -15,10 +15,10 @@
       <yandex-map-default-features-layer />
       <yandex-map-marker
         v-for="(marker, index) in markers"
-        :key="marker.title"
+        :key="index"
         :settings="{
           ...marker,
-          onClick: () => openMarker = { index, hero: marker.hero },
+          onClick: () => openMarker = { index, heroIndex: 0, marker },
           zIndex: openMarker && openMarker.index === index ? 1 : 0,
         }"
         position="top left-center"
@@ -26,10 +26,9 @@
         <div class="custom-marker">
           <img
             class="custom-marker__image"
-            :src="marker.icon"
+            :src="marker.heroes[0].event === 1 ? GpwMark : SvoMark"
           >
         </div>
-
       </yandex-map-marker>
     </yandex-map>
     <div
@@ -37,9 +36,27 @@
       v-if="openMarker"
     >
       <HeroCard
-        :hero="openMarker.hero"
+        :hero="openMarker?.marker.heroes[openMarker?.heroIndex]"
+        :heroes="openMarker?.marker.heroes"
         @close="openMarker = null"
       />
+      <div
+        class="hero-buttons"
+        v-if="openMarker?.marker.heroes.length > 1"
+      >
+        <button
+          :disabled="openMarker?.heroIndex === 0"
+          @click="openMarker && openMarker.heroIndex--"
+        >
+          Предыдущий
+        </button>
+        <button
+          :disabled="openMarker?.heroIndex === openMarker?.marker.heroes.length - 1"
+          @click="openMarker && openMarker.heroIndex++"
+        >
+          Следующий
+        </button>
+      </div>
     </div>
     <p class="map__sources text-white text-subtitle1 q-mt-lg text-bold">Источники:</p>
     <div class="row sources links text-white text-subtitle2 q-mt-sm justify-start"> <a
@@ -98,10 +115,8 @@ import {
   initYmaps,
   createYmapsOptions,
   YandexMapMarker,
-  YandexMapClusterer
 } from 'vue-yandex-maps';
 import type { LngLat } from '@yandex/ymaps3-types';
-import type { YMapClusterer } from '@yandex/ymaps3-types/packages/clusterer';
 import { useHero } from 'composables';
 import { Hero } from 'models';
 import GpwMark from "images/gpw_mark.png"
@@ -114,7 +129,7 @@ const { getHeroList } = useHero()
 const heroes = ref<Hero[]>([])
 
 /* Объявлем переменные для маркеров */
-const markers = shallowRef<any[]>([]);
+const markers = shallowRef<Array<{ coordinates: LngLat, heroes: Hero[] }>>([]);
 
 /* Получение координат по адресу */
 async function geocodeAddress(address: string | any) {
@@ -155,24 +170,23 @@ async function initMap() {
       } else {
         markImage = null;
       }
-      markers.value = [
-        ...markers.value,
-        {
+      const markerIndex = markers.value.findIndex(m => m.coordinates.toString() === coordinates?.toString());
+      if (markerIndex === -1) {
+        markers.value.push({
           coordinates: coordinates as LngLat,
-          title: hero.firstname,
-          subtitle: "Test test test test",
-          icon: markImage,
-          hero: hero
-
-        }
-      ];
+          heroes: [hero],
+        });
+      } else {
+        markers.value[markerIndex].heroes.push(hero);
+      }
     } catch (error) {
       console.error(error)
     }
   }
+
 }
 
-const openMarker = ref<null | { index: number; hero: Hero }>(null)
+const openMarker = ref<{ index: number; heroIndex: number; marker: { coordinates: LngLat, heroes: Hero[] } } | null>(null);
 
 onMounted(() => {
   getData();

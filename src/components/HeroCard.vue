@@ -49,22 +49,22 @@
 </template>
 
 <script setup lang="ts">
-import { PropType } from 'vue';
+import { PropType, ref } from 'vue';
 import { Hero } from 'models';
 import GpwStar from "images/gpw_star.svg"
 import SvoZ from "images/svo_z.svg"
 import CloseIcon from "images/close_icon.svg"
 
-const props = defineProps({
+defineProps({
   hero: {
     type: Object as PropType<Hero>,
     required: true,
   },
+  heroes: {
+    type: Array as PropType<Hero[]>,
+    required: true,
+  },
 });
 
-const emit = defineEmits(['close']);
-
-function close() {
-  emit('close');
-}
+const heroIndex = ref(0);
 </script>
