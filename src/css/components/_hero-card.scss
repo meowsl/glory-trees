@@ -17,9 +17,8 @@
     &> .title{
 
       &> .mark{
-        min-width: 15px;
-        min-height: 15px;
-        margin-bottom: 3px;
+        max-width: 15px;
+        max-height: 15px;
       }
       &> .text{
         margin-left: 0.8rem;

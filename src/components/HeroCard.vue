@@ -4,10 +4,10 @@
       <div class="title row items-center">
         <img
           class="title mark"
-          :src="GpwStar"
+          :src="hero.event === 1 ? GpwStar : SvoZ"
           alt=""
         >
-        <p class="text-center title text">Герой ВОВ</p>
+        <p class="text-center title text">{{ hero.event === 1 ? 'Герой ВОВ' : 'Герой СВО' }}</p>
       </div>
       <div class="close-action">
         <button

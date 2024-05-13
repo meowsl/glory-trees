@@ -98,8 +98,10 @@ import {
   initYmaps,
   createYmapsOptions,
   YandexMapMarker,
+  YandexMapClusterer
 } from 'vue-yandex-maps';
 import type { LngLat } from '@yandex/ymaps3-types';
+import type { YMapClusterer } from '@yandex/ymaps3-types/packages/clusterer';
 import { useHero } from 'composables';
 import { Hero } from 'models';
 import GpwMark from "images/gpw_mark.png"
@@ -112,8 +114,6 @@ const { getHeroList } = useHero()
 const heroes = ref<Hero[]>([])
 
 /* Объявлем переменные для маркеров */
-const handleClick = (event: MouseEvent) => console.log(event);
-// const markers: any[] = []
 const markers = shallowRef<any[]>([]);
 
 /* Получение координат по адресу */
