@@ -21,6 +21,7 @@
           onClick: () => openMarker = { index, heroIndex: 0, marker },
           zIndex: openMarker && openMarker.index === index ? 1 : 0,
         }"
+        :coordinates="marker.coordinates"
         position="top left-center"
       >
         <div class="custom-marker">
@@ -30,6 +31,7 @@
           >
         </div>
       </yandex-map-marker>
+
     </yandex-map>
     <div
       class="hero-info"
