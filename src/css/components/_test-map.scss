@@ -1,0 +1,24 @@
+.custom-marker {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  cursor: pointer;
+  color: #fff;
+  padding: 10px 20px;
+  white-space: nowrap;
+
+  &__image{
+    max-height: 50px;
+    max-width: 30px;
+  }
+}
+
+.hero-info {
+  position: absolute; /* Изменяем position на absolute */
+  top: 4%; /* Расстояние от верхнего края */
+  left: 2%; /* Расстояние от левого края */
+  padding: 0;
+  z-index: 1000;
+  max-width: 550px;
+}

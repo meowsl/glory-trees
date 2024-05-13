@@ -13,13 +13,34 @@
     >
       <yandex-map-default-scheme-layer />
       <yandex-map-default-features-layer />
-      <yandex-map-default-marker
-        v-for="marker in markersGeoJsonSource"
+      <yandex-map-marker
+        v-for="(marker, index) in markers"
         :key="marker.title"
-        :settings="marker"
+        :settings="{
+          ...marker,
+          onClick: () => openMarker = { index, hero: marker.hero },
+          zIndex: openMarker && openMarker.index === index ? 1 : 0,
+        }"
+        position="top left-center"
       >
-      </yandex-map-default-marker>
+        <div class="custom-marker">
+          <img
+            class="custom-marker__image"
+            :src="marker.icon"
+          >
+        </div>
+
+      </yandex-map-marker>
     </yandex-map>
+    <div
+      class="hero-info"
+      v-if="openMarker"
+    >
+      <HeroCard
+        :hero="openMarker.hero"
+        @close="openMarker = null"
+      />
+    </div>
     <p class="map__sources text-white text-subtitle1 q-mt-lg text-bold">Источники:</p>
     <div class="row sources links text-white text-subtitle2 q-mt-sm justify-start"> <a
         class="q-pr-md"
@@ -63,7 +84,8 @@
         target="_blank"
       >
         <p>герои-сво.рф</p>
-      </a> </div>
+      </a>
+    </div>
   </div>
 </template>
 
@@ -75,14 +97,14 @@ import {
   YandexMapDefaultFeaturesLayer,
   initYmaps,
   createYmapsOptions,
-  YandexMapDefaultMarker,
-  YandexMapMarker
+  YandexMapMarker,
 } from 'vue-yandex-maps';
 import type { LngLat } from '@yandex/ymaps3-types';
 import { useHero } from 'composables';
 import { Hero } from 'models';
 import GpwMark from "images/gpw_mark.png"
 import SvoMark from "images/svo_mark.png"
+import HeroCard from './HeroCard.vue';
 
 const { getHeroList } = useHero()
 
@@ -92,7 +114,7 @@ const heroes = ref<Hero[]>([])
 /* Объявлем переменные для маркеров */
 const handleClick = (event: MouseEvent) => console.log(event);
 // const markers: any[] = []
-const markersGeoJsonSource = shallowRef<any[]>([]);
+const markers = shallowRef<any[]>([]);
 
 /* Получение координат по адресу */
 async function geocodeAddress(address: string | any) {
@@ -133,24 +155,24 @@ async function initMap() {
       } else {
         markImage = null;
       }
-      markersGeoJsonSource.value = [
-        ...markersGeoJsonSource.value,
+      markers.value = [
+        ...markers.value,
         {
           coordinates: coordinates as LngLat,
-          onClick: handleClick,
-          title: "Test",
+          title: hero.firstname,
           subtitle: "Test test test test",
           icon: markImage,
+          hero: hero
+
         }
       ];
     } catch (error) {
       console.error(error)
-    } finally {
-      // console.log(markersGeoJsonSource)
     }
   }
 }
 
+const openMarker = ref<null | { index: number; hero: Hero }>(null)
 
 onMounted(() => {
   getData();
