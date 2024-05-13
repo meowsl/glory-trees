@@ -18,7 +18,7 @@
         :key="marker.title"
         :settings="{
           ...marker,
-          onClick: () => openMarker = { index, hero: marker.hero },
+          onClick: () => openMarker = { index, heroes: marker.heroes },
           zIndex: openMarker && openMarker.index === index ? 1 : 0,
         }"
         position="top left-center"
@@ -36,10 +36,16 @@
       class="hero-info"
       v-if="openMarker"
     >
-      <HeroCard
-        :hero="openMarker.hero"
-        @close="openMarker = null"
-      />
+      <div
+        class="hero-card"
+        v-for="(hero, index) in openMarker.heroes"
+        :key="index"
+      >
+        <HeroCard
+          :hero="hero"
+          @close="openMarker = null"
+        />
+      </div>
     </div>
     <p class="map__sources text-white text-subtitle1 q-mt-lg text-bold">Источники:</p>
     <div class="row sources links text-white text-subtitle2 q-mt-sm justify-start"> <a
@@ -98,23 +104,22 @@ import {
   initYmaps,
   createYmapsOptions,
   YandexMapMarker,
-  YandexMapClusterer
 } from 'vue-yandex-maps';
 import type { LngLat } from '@yandex/ymaps3-types';
-import type { YMapClusterer } from '@yandex/ymaps3-types/packages/clusterer';
 import { useHero } from 'composables';
 import { Hero } from 'models';
+import HeroCard from './HeroCard.vue';
 import GpwMark from "images/gpw_mark.png"
 import SvoMark from "images/svo_mark.png"
-import HeroCard from './HeroCard.vue';
 
 const { getHeroList } = useHero()
 
-/* Объявлем переменную для получения списка героев */
+
 const heroes = ref<Hero[]>([])
 
 /* Объявлем переменные для маркеров */
 const markers = shallowRef<any[]>([]);
+const markersWithHeroes = shallowRef<any[]>([]);
 
 /* Получение координат по адресу */
 async function geocodeAddress(address: string | any) {
@@ -144,35 +149,45 @@ const getData = async () => {
 
 /* Создание карты с метками */
 async function initMap() {
+  const heroesByCoordinates = new Map();
+
   for (const hero of heroes.value) {
     try {
       const coordinates: LngLat | null = await geocodeAddress(hero.gravePlace)
-      let markImage;
-      if (hero.event === 1) {
-        markImage = GpwMark;
-      } else if (hero.event === 2) {
-        markImage = SvoMark;
-      } else {
-        markImage = null;
-      }
-      markers.value = [
-        ...markers.value,
-        {
-          coordinates: coordinates as LngLat,
-          title: hero.firstname,
-          subtitle: "Test test test test",
-          icon: markImage,
-          hero: hero
-
+      if (coordinates) {
+        let markImage;
+        if (hero.event === 1) {
+          markImage = GpwMark;
+        } else if (hero.event === 2) {
+          markImage = SvoMark;
+        } else {
+          markImage = null;
         }
-      ];
+        if (heroesByCoordinates.has(coordinates.toString())) {
+          heroesByCoordinates.get(coordinates.toString()).push(hero);
+        } else {
+          heroesByCoordinates.set(coordinates.toString(), [hero]);
+          markersWithHeroes.value = [
+            ...markersWithHeroes.value,
+            {
+              coordinates: coordinates as LngLat,
+              title: hero.firstname,
+              subtitle: "Test test test test",
+              icon: markImage,
+              heroes: heroesByCoordinates.get(coordinates.toString())
+            }
+          ];
+        }
+      }
     } catch (error) {
       console.error(error)
     }
   }
+
+  markers.value = markersWithHeroes.value;
 }
 
-const openMarker = ref<null | { index: number; hero: Hero }>(null)
+const openMarker = ref<null | { index: number; heroes: Hero[] }>(null)
 
 onMounted(() => {
   getData();

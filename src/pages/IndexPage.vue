@@ -1,12 +1,12 @@
 <template>
   <q-page class="row items-center justify-evenly">
-    <BannerApp />
+    <!-- <BannerApp />
     <CarouselApp />
     <AboutApp />
     <TreesMap />
     <SoldierApp />
     <QuizApp />
-    <TeamApp />
+    <TeamApp /> -->
     <TestMap />
   </q-page>
 </template>
