@@ -19,7 +19,15 @@
           :key="marker.title"
           :settings="{
             ...marker,
-            onClick: () => openMarker = { index, heroes: marker.heroes },
+            onClick: () => {
+              if (openMarker && openMarker.index === index) {
+                openMarker = null;
+                currentSlide = 0;
+              } else {
+                openMarker = { index, heroes: marker.heroes };
+                currentSlide = 0;
+              }
+            },
             zIndex: openMarker && openMarker.index === index ? 1 : 0,
           }"
           position="top left-center"
@@ -31,6 +39,7 @@
             >
           </div>
         </yandex-map-marker>
+
       </yandex-map>
     </div>
     <AppPreloader :showing="isLoading" />
@@ -47,7 +56,7 @@
         >
           <HeroCard
             :hero="hero"
-            @close="openMarker = null"
+            @close="openMarker = null; currentSlide = 0"
           />
         </div>
         <div
@@ -226,8 +235,6 @@ function nextSlide() {
     currentSlide.value = (currentSlide.value + 1) % openMarker.value.heroes.length;
   }
 }
-
-
 onMounted(() => {
   isLoading.value = true
   getData();
