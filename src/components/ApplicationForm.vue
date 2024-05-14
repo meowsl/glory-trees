@@ -5,8 +5,14 @@
       @submit="handleSubmit"
     >
       <q-card class="application-form__card">
-        <q-card-section class="card__title text-center">
+        <q-card-section class="card__title row text-center items-center justify-center">
           <p class="text-h4 text-white">Добавить героя</p>
+          <div
+            class="dialog-close-btn"
+            @click="$emit('close')"
+          >
+            <img :src="CloseIcon">
+          </div>>
         </q-card-section>
         <q-separator dark />
         <q-card-section class="q-mt-md">
@@ -17,7 +23,7 @@
                 v-model="event"
                 :options="selectEvent"
                 hide-bottom-space
-                label="Событие"
+                label="Событие*"
                 lazy-rules
                 :rules="[val => val || 'Обязательное поле!']"
                 class="bg-grey-3 text-white"
@@ -25,31 +31,31 @@
             </div>
           </div>
           <div class="row q-mb-lg justify-between">
-            <div class="col-4 q-px-sm">
+            <div class="col-12 col-md-4 q-px-sm q-mb-md q-mb-md-auto">
               <q-input
                 filled
                 v-model="lastname"
                 hide-bottom-space
                 debounce="1000"
-                placeholder="Фамилия"
+                placeholder="Фамилия*"
                 lazy-rules
                 :rules="[val => val && val.length > 0 || 'Обязательное поле!']"
                 class="bg-grey-3 text-white"
               />
             </div>
-            <div class="col-4 q-px-sm">
+            <div class="col-12 col-md-4 q-px-sm q-mb-md q-mb-md-auto">
               <q-input
                 filled
                 v-model="firstname"
                 hide-bottom-space
                 debounce="1000"
-                placeholder="Имя"
+                placeholder="Имя*"
                 lazy-rules
                 :rules="[val => val && val.length > 0 || 'Обязательное поле!']"
                 class="bg-grey-3 text-white"
               />
             </div>
-            <div class="col-4 q-px-sm">
+            <div class="col-12 col-md-4 q-px-sm">
               <q-input
                 filled
                 v-model="midname"
@@ -65,7 +71,7 @@
                 filled
                 v-model="photo"
                 hide-bottom-space
-                label="Выберите фото"
+                label="Выберите фото*"
                 stack-label
                 @update:model-value="val => { photo = val }"
                 type="file"
@@ -76,14 +82,14 @@
             </div>
           </div>
           <div class="row q-mb-lg">
-            <div class="col-4 q-px-sm">
+            <div class="col-12 col-md-4 q-px-sm q-mb-md q-mb-md-auto">
               <q-input
                 filled
                 v-model="birthdate"
                 hide-bottom-space
                 mask="##.##.####"
                 fill-mask="_"
-                hint="Дата рождения"
+                label="Дата рождения*"
                 lazy-rules
                 :rules="[val => val && new Date(Number(val.split('.')[2]), Number(val.split('.')[1]) - 1, Number(val.split('.')[0])) <= new Date() || 'Укажите корректную дату!']"
                 class="bg-grey-3 text-white"
@@ -117,12 +123,12 @@
                 </template>
               </q-input>
             </div>
-            <div class="col-8 q-px-sm">
+            <div class="col-12 col-md-8 q-px-sm">
               <q-input
                 filled
                 v-model="birthplace"
                 hide-bottom-space
-                placeholder="Место рождения"
+                placeholder="Место рождения*"
                 lazy-rules
                 :rules="[val => val && val.length > 0 || 'Обязательное поле!']"
                 class="bg-grey-3 text-white"
@@ -130,14 +136,14 @@
             </div>
           </div>
           <div class="row q-mb-lg">
-            <div class="col-4 q-px-sm">
+            <div class="col-12 col-md-4 q-px-sm q-mb-md q-mb-md-auto">
               <q-input
                 filled
                 v-model="deathdate"
                 hide-bottom-space
                 mask="##.##.####"
                 fill-mask="_"
-                hint="Дата смерти"
+                label="Дата смерти*"
                 lazy-rules
                 :rules="[val => val && new Date(Number(val.split('.')[2]), Number(val.split('.')[1]) - 1, Number(val.split('.')[0])) <= new Date() || 'Укажите корректную дату!']"
                 class="bg-grey-3 text-white"
@@ -171,12 +177,12 @@
                 </template>
               </q-input>
             </div>
-            <div class="col-8 q-px-sm">
+            <div class="col-12 col-md-8 q-px-sm ">
               <q-input
                 filled
                 v-model="graveplace"
                 hide-bottom-space
-                placeholder="Место захоронения"
+                placeholder="Место захоронения*"
                 lazy-rules
                 :rules="[val => val && val.length > 0 || 'Обязательное поле!']"
                 class="bg-grey-3 text-white"
@@ -184,7 +190,7 @@
             </div>
           </div>
           <div class="row q-mb-md">
-            <div class="col-4 q-px-sm">
+            <div class="col-12 col-md-4 q-mb-md q-mb-md-auto q-px-sm">
               <q-input
                 filled
                 v-model="rank"
@@ -192,7 +198,7 @@
                 class="bg-grey-3 text-white"
               />
             </div>
-            <div class="col-8 q-px-sm">
+            <div class="col-12 col-md-8 q-px-sm">
               <q-input
                 filled
                 v-model="feat"
@@ -222,6 +228,7 @@ import { useHero } from 'composables'
 import { useQuasar } from 'quasar'
 import { selectEvent } from 'src/constant'
 import AppPreloader from 'components/AppPreloader.vue'
+import CloseIcon from "images/close_icon.svg"
 
 const $q = useQuasar()
 const { uploadHero } = useHero()
@@ -231,20 +238,32 @@ const form = ref<HTMLFormElement>()
 
 /* Обязательные поля */
 const event = ref()
-const firstname = ref()
-const lastname = ref()
+const firstname = ref<string>('')
+const lastname = ref<string>('')
 const photo = ref()
 const birthdate = ref<string>('')
 const birthplace = ref<string>('')
 const deathdate = ref<string>('')
 const graveplace = ref<string>('')
 
+const requiredFields = [
+  { ref: 'event', value: event.value },
+  { ref: 'firstname', value: firstname.value },
+  { ref: 'lastname', value: lastname.value },
+  { ref: 'photo', value: photo.value },
+  { ref: 'birthdate', value: birthdate.value },
+  { ref: 'birthplace', value: birthplace.value },
+  { ref: 'deathdate', value: deathdate.value },
+  { ref: 'graveplace', value: graveplace.value }
+]
+
 /* Необязательные поля */
-const midname = ref()
+const midname = ref<string>('')
 const rank = ref<string>('')
 const feat = ref<string>('')
 
 const handleSubmit = async () => {
+
   isLoading.value = true
   const formData = new FormData()
   formData.append('event', event.value.value)
@@ -274,7 +293,7 @@ const handleSubmit = async () => {
 
     $q.notify({
       type: 'postitive',
-      message: 'Заявка успешно отправлена!'
+      message: 'Заявка успешно отправлена! Ожидайте модерации.'
     })
     onReset()
   } catch (error) {
@@ -291,8 +310,8 @@ const handleSubmit = async () => {
 const onReset = () => {
   /* Обязательные поля */
   event.value = null
-  firstname.value = null
-  lastname.value = null
+  firstname.value = ''
+  lastname.value = ''
   photo.value = null
   birthdate.value = ''
   birthplace.value = ''
@@ -300,7 +319,7 @@ const onReset = () => {
   graveplace.value = ''
 
   /* Необязательные поля */
-  midname.value = null
+  midname.value = ''
   rank.value = ''
   feat.value = ''
 

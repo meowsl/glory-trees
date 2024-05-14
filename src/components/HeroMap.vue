@@ -134,7 +134,7 @@
           @click="openApplicationForm"
         />
         <q-dialog v-model="showApplicationForm">
-          <ApplicationForm />
+          <ApplicationForm @close="showApplicationForm = false" />
         </q-dialog>
       </div>
     </div>

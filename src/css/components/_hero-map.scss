@@ -54,8 +54,14 @@
   display: block;
 }
 
-.application-btn__btn{
+.application-btn__btn {
   background-color: #841818;
+}
+
+@media (max-width: 1045px) {
+  .application-btn {
+    margin-top: 1rem !important;
+  }
 }
 
 @media (max-width: 1024px) {
