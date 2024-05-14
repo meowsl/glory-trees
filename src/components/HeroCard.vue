@@ -31,7 +31,7 @@
         </div>
         <div class="content info">
           <div class="info fullname">
-            {{ hero.lastname }} {{ hero.firstname }} {{ hero.lastname }}, {{ hero.birthday }} - {{ hero.deathdate }}
+            {{ hero.lastname }} {{ hero.firstname }} {{ hero.midname }}, {{ hero.birthday }} - {{ hero.deathdate }}
           </div>
           <div class="info birth-place text-subtitle2">
             Место рождения: {{ hero.birthPlace }}
