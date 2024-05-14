@@ -16,11 +16,8 @@
 
 .hero-info {
   position: absolute;
-  /* Изменяем position на absolute */
   top: 2.5rem;
-  /* Расстояние от верхнего края */
   left: 2.5rem;
-  /* Расстояние от левого края */
   padding: 0;
   z-index: 1000;
   max-width: 550px;
@@ -35,6 +32,7 @@
   border-top: none;
 
   &>.hero-slider__control {
+    cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -66,10 +64,30 @@
   .hero-info {
     max-width: 350px;
   }
+
+  .hero-slider__controls {
+    padding: 0.5rem;
+
+    &>.hero-slider__control {
+      font-size: 20px;
+      width: 25px;
+      height: 25px;
+    }
+  }
 }
 
 @media (max-width: 660px) {
   .hero-info {
     max-width: 305px;
+    left: 2.3rem
+  }
+
+  .hero-slider__controls {
+
+    &>.hero-slider__control {
+      font-size: 18px;
+      width: 20px;
+      height: 20px;
+    }
   }
 }

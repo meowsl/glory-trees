@@ -94,12 +94,48 @@
 @media (max-width: 1024px) {
   .hero-card {
     max-width: 450px;
+
+    &__content {
+
+      &>.row>.photo {
+        max-width: 6rem;
+      }
+
+      &>.row>.info {
+        flex: 2;
+
+        &>.fullname {
+          font-size: 14px;
+        }
+
+        &>.birth-place {
+          font-size: 12px;
+          line-height: 1;
+        }
+
+        &>.rank{
+          font-size: 12px;
+        }
+      }
+
+      &>.feat{
+        font-size: 12px;
+      }
+    }
   }
 }
 
 @media (max-width: 960px) {
   .hero-card {
     max-width: 350px;
+
+    &__content {
+      padding: 0.6rem;
+
+      &>.row>.photo {
+        max-width: 4rem;
+      }
+    }
   }
 }
 

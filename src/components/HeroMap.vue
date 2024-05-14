@@ -47,7 +47,10 @@
             @close="openMarker = null"
           />
         </div>
-        <div class="hero-slider__controls">
+        <div
+          class="hero-slider__controls"
+          v-if="openMarker?.heroes.length > 1"
+        >
           <button
             class="hero-slider__control hero-slider__control--prev"
             @click="prevSlide"
@@ -209,12 +212,17 @@ const openMarker = ref<null | { index: number; heroes: Hero[] }>(null)
 const currentSlide = ref(0);
 
 function prevSlide() {
-  currentSlide.value = (currentSlide.value - 1 + openMarker.value?.heroes.length) % openMarker.value?.heroes.length;
+  if (openMarker.value && openMarker.value.heroes) {
+    currentSlide.value = (currentSlide.value - 1 + openMarker.value.heroes.length) % openMarker.value.heroes.length;
+  }
 }
 
 function nextSlide() {
-  currentSlide.value = (currentSlide.value + 1) % openMarker.value?.heroes.length;
+  if (openMarker.value && openMarker.value.heroes) {
+    currentSlide.value = (currentSlide.value + 1) % openMarker.value.heroes.length;
+  }
 }
+
 
 onMounted(() => {
   getData();

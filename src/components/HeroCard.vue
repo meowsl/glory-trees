@@ -33,15 +33,15 @@
           <div class="info fullname">
             {{ hero.lastname }} {{ hero.firstname }} {{ hero.lastname }}, {{ hero.birthday }} - {{ hero.deathdate }}
           </div>
-          <div class="infor birth-place text-subtitle2">
+          <div class="info birth-place text-subtitle2">
             Место рождения: {{ hero.birthPlace }}
           </div>
-          <div class="info__rank q-mt-sm text-subtitle2">
+          <div class="info rank q-mt-sm text-subtitle2">
             Звание: {{ hero.rank ? hero.rank : 'неизвестно' }}
           </div>
         </div>
       </div>
-      <div class="hero-card__feat q-mt-sm text-subtitle2">
+      <div class="content feat q-mt-sm text-subtitle2">
         {{ hero.feat }}
       </div>
     </div>

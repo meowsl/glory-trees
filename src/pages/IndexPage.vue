@@ -1,13 +1,14 @@
 <template>
   <q-page class="row items-center justify-evenly">
-    <!-- <BannerApp />
+    <BannerApp />
     <CarouselApp />
     <AboutApp />
-    <TreesMap />
+    <!-- <TreesMap /> -->
+    <HeroMap />
     <SoldierApp />
     <QuizApp />
-    <TeamApp /> -->
-    <TestMap />
+    <TeamApp />
+
   </q-page>
 </template>
 
@@ -15,9 +16,9 @@
 import BannerApp from 'src/components/BannerApp.vue';
 import CarouselApp from 'src/components/CarouselApp.vue';
 import AboutApp from 'src/components/AboutApp.vue';
-import TreesMap from 'src/components/TreesMap.vue';
+// import TreesMap from 'src/components/TreesMap.vue';
 import SoldierApp from 'src/components/SoldierApp.vue';
 import QuizApp from 'src/components/QuizApp.vue';
 import TeamApp from 'src/components/TeamApp.vue';
-import TestMap from 'src/components/TestMap.vue';
+import HeroMap from 'src/components/HeroMap.vue';
 </script>
