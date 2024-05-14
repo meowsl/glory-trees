@@ -29,7 +29,7 @@ REST_FRAMEWORK = {
         'rest_framework.throttling.ScopedRateThrottle',
     ],
     'DEFAULT_THROTTLE_RATES': {
-        'applications': '15/hour',
+        'applications': '10/hour',
     },
     "DEFAULT_SCHEMA_CLASS": "drf_spectacular.openapi.AutoSchema",
     "DATE_FORMAT": "%d.%m.%Y",
