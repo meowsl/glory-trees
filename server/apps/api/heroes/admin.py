@@ -4,6 +4,7 @@ from django.contrib import (
 )
 from django.http import HttpResponseRedirect
 from django.utils.translation import gettext_lazy as _
+import os
 from .models import (
     Heroes,
     Application,
@@ -35,7 +36,8 @@ class ApplicationAdmin(admin.ModelAdmin):
     search_fields = ('lastname', 'firstname')
     actions = ['approve_applications', 'reject_applications']
 
-    change_form_template = 'C:/work/meowsl/glory-trees/server/templates/admin/application_change_form.html'
+    # change_form_template = 'C:/work/meowsl/glory-trees/server/templates/admin/application_change_form.html'
+    change_form_template = f'{os.getcwd()}/server/templates/admin/application_change_form.html'
 
     def get_queryset(self, request):
         qs = super().get_queryset(request)

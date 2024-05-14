@@ -78,50 +78,65 @@
         </div>
       </div>
     </div>
-    <p class="map__sources text-white text-subtitle1 q-mt-lg text-bold">Источники:</p>
-    <div class="row sources links text-white text-subtitle2 q-mt-sm justify-start"> <a
-        class="q-pr-md"
-        href="https://mpomos.ru/heroes"
-        target="_blank"
-      >
-        <p>mpomos.ru/heroes</p>
-      </a> <a
-        class="q-pr-md"
-        href="https://pamyat-naroda.ru/"
-        target="_blank"
-      >
-        <p>pamyat-naroda.ru</p>
-      </a> <a
-        class="q-pr-md"
-        href="https://warheroes.ru/"
-        target="_blank"
-      >
-        <p>warheroes.ru</p>
-      </a> <a
-        class="q-pr-md"
-        href="https://poisk.re/"
-        target="_blank"
-      >
-        <p>poisk.re</p>
-      </a> <a
-        class="q-pr-md"
-        href="https://znanierussia.ru/articles/"
-        target="_blank"
-      >
-        <p>znanierussia.ru</p>
-      </a> <a
-        class="q-pr-md"
-        href="https://героиспецоперации.рф/"
-        target="_blank"
-      >
-        <p>героиспецоперации.рф</p>
-      </a> <a
-        class="q-pr-md"
-        href="https://герои-сво.рф/"
-        target="_blank"
-      >
-        <p>герои-сво.рф</p>
-      </a>
+    <div class="undermap row justify-between q-mt-lg">
+      <div class="map-legend">
+        <p class="map__sources text-white text-subtitle1  text-bold">Источники:</p>
+        <div class="row sources links text-white text-subtitle2 q-mt-sm justify-start"> <a
+            class="q-pr-md"
+            href="https://mpomos.ru/heroes"
+            target="_blank"
+          >
+            <p>mpomos.ru/heroes</p>
+          </a> <a
+            class="q-pr-md"
+            href="https://pamyat-naroda.ru/"
+            target="_blank"
+          >
+            <p>pamyat-naroda.ru</p>
+          </a> <a
+            class="q-pr-md"
+            href="https://warheroes.ru/"
+            target="_blank"
+          >
+            <p>warheroes.ru</p>
+          </a> <a
+            class="q-pr-md"
+            href="https://poisk.re/"
+            target="_blank"
+          >
+            <p>poisk.re</p>
+          </a> <a
+            class="q-pr-md"
+            href="https://znanierussia.ru/articles/"
+            target="_blank"
+          >
+            <p>znanierussia.ru</p>
+          </a> <a
+            class="q-pr-md"
+            href="https://героиспецоперации.рф/"
+            target="_blank"
+          >
+            <p>героиспецоперации.рф</p>
+          </a> <a
+            class="q-pr-md"
+            href="https://герои-сво.рф/"
+            target="_blank"
+          >
+            <p>герои-сво.рф</p>
+          </a>
+        </div>
+      </div>
+      <div class="application-btn">
+        <q-btn
+          class="application-btn__btn text-white"
+          push
+          label="Добавить героя"
+          @click="openApplicationForm"
+        />
+        <q-dialog v-model="showApplicationForm">
+          <ApplicationForm />
+        </q-dialog>
+      </div>
     </div>
   </div>
 </template>
@@ -141,13 +156,16 @@ import { useHero } from 'composables';
 import { Hero } from 'models';
 import HeroCard from './HeroCard.vue';
 import AppPreloader from './AppPreloader.vue';
+import ApplicationForm from './ApplicationForm.vue';
 import GpwMark from "images/gpw_mark.png"
 import SvoMark from "images/svo_mark.png"
 
+/* Переменные для функционала */
 const isLoading = ref(false)
-
 const { getHeroList } = useHero()
+const showApplicationForm = ref(false);
 
+/* Объявляем список геров */
 const heroes = ref<Hero[]>([])
 
 /* Объявлем переменные для маркеров */
@@ -235,6 +253,11 @@ function nextSlide() {
     currentSlide.value = (currentSlide.value + 1) % openMarker.value.heroes.length;
   }
 }
+
+function openApplicationForm() {
+  showApplicationForm.value = true;
+}
+
 onMounted(() => {
   isLoading.value = true
   getData();

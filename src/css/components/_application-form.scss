@@ -1,0 +1,46 @@
+.application-form{
+  padding: 0;
+  border-radius: 0 !important;
+  width: 100%;
+  max-width: 40rem !important; /* убираем ограничение на max-width */
+  max-height: 100% !important;
+  &__card{
+    background-color: #171717;
+    background-image: url('src/assets/images/noise.svg');
+    background-repeat: repeat;
+    background-size: contain;
+    border: #841818 3px solid !important;
+    border-radius: 0 !important;
+  }
+
+  &> .q-form > .q-inner-loading{
+    margin: 0;
+    height: 100%;
+    width: 100%;
+  }
+}
+
+.q-field--filled .q-field__control{
+  border: #841818 2px solid;
+  border-radius: 0;
+}
+
+.q-field__bottom--stale{
+  position: absolute;
+  background-image: url('src/assets/images/noise.svg');
+  background-repeat: repeat;
+  background-size: contain;
+  padding-top: 0.2rem;
+
+  &> .q-field__messages{
+    font-size: 14px;
+  }
+}
+
+.q-field--focused .q-field--highlighted{
+  outline: none !important;
+}
+
+.submit-button{
+  background-color: #841818;
+}
