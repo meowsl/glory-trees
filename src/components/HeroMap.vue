@@ -1,36 +1,39 @@
 <template>
   <div class="q-pa-lg unit">
-    <yandex-map
-      :settings="{
-        location: {
-          center: [37.617644, 55.755819],
-          zoom: 9,
-        },
-      }"
-      width="100%"
-      height="85vh"
-      @ymapsready="initMap"
-    >
-      <yandex-map-default-scheme-layer />
-      <yandex-map-default-features-layer />
-      <yandex-map-marker
-        v-for="(marker, index) in markers"
-        :key="marker.title"
+    <div class="">
+      <yandex-map
         :settings="{
-          ...marker,
-          onClick: () => openMarker = { index, heroes: marker.heroes },
-          zIndex: openMarker && openMarker.index === index ? 1 : 0,
+          location: {
+            center: [37.617644, 55.755819],
+            zoom: 9,
+          },
         }"
-        position="top left-center"
+        width="100%"
+        height="85vh"
+        @ymapsready="initMap"
       >
-        <div class="custom-marker">
-          <img
-            class="custom-marker__image"
-            :src="marker.icon"
-          >
-        </div>
-      </yandex-map-marker>
-    </yandex-map>
+        <yandex-map-default-scheme-layer />
+        <yandex-map-default-features-layer />
+        <yandex-map-marker
+          v-for="(marker, index) in markers"
+          :key="marker.title"
+          :settings="{
+            ...marker,
+            onClick: () => openMarker = { index, heroes: marker.heroes },
+            zIndex: openMarker && openMarker.index === index ? 1 : 0,
+          }"
+          position="top left-center"
+        >
+          <div class="custom-marker">
+            <img
+              class="custom-marker__image"
+              :src="marker.icon"
+            >
+          </div>
+        </yandex-map-marker>
+      </yandex-map>
+    </div>
+    <AppPreloader :showing="isLoading" />
     <div
       class="hero-info"
       v-if="openMarker"
@@ -116,7 +119,6 @@
 
 <script setup lang="ts">
 import { shallowRef, ref, onMounted } from 'vue';
-import { QCarousel, QCarouselSlide } from 'quasar'
 import {
   YandexMap,
   YandexMapDefaultSchemeLayer,
@@ -129,9 +131,11 @@ import type { LngLat } from '@yandex/ymaps3-types';
 import { useHero } from 'composables';
 import { Hero } from 'models';
 import HeroCard from './HeroCard.vue';
+import AppPreloader from './AppPreloader.vue';
 import GpwMark from "images/gpw_mark.png"
 import SvoMark from "images/svo_mark.png"
-import ArrowLeft from "images/arrow-left.svg"
+
+const isLoading = ref(false)
 
 const { getHeroList } = useHero()
 
@@ -203,8 +207,8 @@ async function initMap() {
       console.error(error)
     }
   }
-
   markers.value = markersWithHeroes.value;
+  isLoading.value = false
 }
 
 const openMarker = ref<null | { index: number; heroes: Hero[] }>(null)
@@ -225,6 +229,7 @@ function nextSlide() {
 
 
 onMounted(() => {
+  isLoading.value = true
   getData();
   const options = createYmapsOptions({
     apikey: 'c0d403ab-e5be-4049-908c-8122a58acf23',
