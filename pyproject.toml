@@ -59,6 +59,7 @@ django-filter = "^23.3"
 django-easy-select2 = "^1.5.8"
 django-admin-sortable2 = "^2.1.10"
 django-apptemplates = "^1.5"
+bandit = "^1.7.8"
 
 
 [tool.poetry.group.dev.dependencies]
