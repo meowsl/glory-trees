@@ -8,4 +8,4 @@ jobs:
 
     steps:
     - name: Run echo command
-      run: echo ${{ secrets.SECRET_KEY }}
+      run: echo "meowmeowmeow"
