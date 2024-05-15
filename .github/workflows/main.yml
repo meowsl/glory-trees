@@ -34,13 +34,14 @@ jobs:
         run: |
           pwd
           ls -la
+          cd /home/runner/work/glory-trees/glory-trees
 
       - name: Frontend-Docker
         run: |
-          docker image build -t ghcr.io/meowsl/glory-trees:frontend -f deploy/Dockerfile:frontend .
+          docker image build -t ghcr.io/meowsl/glory-trees:frontend -f deploy/Dockerfile.frontend .
           echo "Success build image for Frontend"
 
-      - name: Frontend-Docker
+      - name: Backend-Docker
         run: |
-          docker image build -t ghcr.io/meowsl/glory-trees:backend -f deploy/Dockerfile:backend .
+          docker image build -t ghcr.io/meowsl/glory-trees:backend -f deploy/Dockerfile.backend .
           echo "Success build image for Backend"
