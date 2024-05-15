@@ -29,5 +29,6 @@ jobs:
     steps:
       - name: Check current directory
         run: |
+          cd ..
           pwd
           ls -la
