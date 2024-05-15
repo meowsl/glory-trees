@@ -13,17 +13,12 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v2
 
-    - name: Fronted-Install
+    - name: Frontend-Install
       run: |
-        make install-frontend
-        yarn build
         echo "Success frontend"
 
     - name: Backend-Install
       run: |
-        curl -sSL https://install.python-poetry.org | POETRY_VERSION=1.7.1 python -
-        export PATH="${PATH}:/etc/poetry/bin"
-        make install-backend
         echo "Success backend"
 
   build-app:
@@ -32,15 +27,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-
-      - name: Frontend-Docker
+      - name: Check current directory
         run: |
-          docker image build -t ghcr.io/meowsl/glory-trees:frontend -f deploy/Dockerfile:frontend .
-          echo "Success build image for Frontend"
-
-      - name: Frontend-Docker
-        run: |
-          docker image build -t ghcr.io/meowsl/glory-trees:backend -f deploy/Dockerfile:backend .
-          echo "Success build image for Backend"
+          pwd
+          ls -la
