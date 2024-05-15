@@ -6,7 +6,7 @@ on:
       - main
 
 jobs:
-  build-and-push:
+  test-frontend:
     runs-on: ubuntu-latest
 
     steps:
@@ -18,6 +18,13 @@ jobs:
         make install-frontend
         yarn build
         echo "Success frontend"
+
+  test-backend:
+    runs-on: ubuntu-lates
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
 
     - name: Test Backend
       run: |
