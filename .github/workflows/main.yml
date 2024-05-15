@@ -3,7 +3,7 @@ name: Build and push Docker images
 on:
   push:
     branches:
-      - main
+      - dev2.0
 
 jobs:
   test-frontend:
