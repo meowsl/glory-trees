@@ -1,16 +1,25 @@
-name: Test Actions
+name: Build and push Docker images
 
-on: [push]
+on:
+  push:
+    branches:
+      - main
 
 jobs:
-  test:
+  build-and-push:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Run echo command
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Test Frontend
       run: |
-        if [ -n "${{ secrets.SECRET_KEY }}" ]; then
-          echo "Successfully retrieved secret key"
-        else
-          echo "Failed to retrieve secret key"
-        fi
+        make install-frontend
+        yarn build
+        echo "Success frontend"
+
+    - name: Test Backend
+      run: |
+        make install-backend
+        echo "Success backend"
