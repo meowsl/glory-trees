@@ -13,12 +13,22 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v2
 
+    - name: Update Node
+      uses: actions/setup-node@v2
+      with:
+        node-version: 18.18.0
+
     - name: Frontend-Install
       run: |
+        make install-frontend
+        yarn build
         echo "Success frontend"
 
     - name: Backend-Install
       run: |
+        curl -sSL https://install.python-poetry.org | POETRY_VERSION=1.7.1 python -
+        export PATH="${PATH}:/etc/poetry/bin"
+        make install-backend
         echo "Success backend"
 
   build-app:
@@ -29,6 +39,11 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
+
+      - name: Update Node
+        uses: actions/setup-node@v2
+        with:
+          node-version: 18.18.0
 
       - name: Check Dir
         run: |
