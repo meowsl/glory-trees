@@ -1,0 +1,146 @@
+.hero-card {
+  top: 10px;
+  left: 10px;
+  background-color: rgba(0, 0, 0, 1);
+  z-index: 1000;
+  color: #fff;
+  max-width: 550px;
+  max-height: auto;
+  border: #841818 3px solid;
+  border-bottom: rgb(255, 255, 255, 0.3) 1px solid;
+
+  &__header {
+    background-color: #222222;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.8rem;
+
+    &>.title {
+
+      &>.mark {
+        max-width: 15px;
+        max-height: 15px;
+      }
+
+      &>.text {
+        margin-left: 0.8rem;
+      }
+    }
+
+    &>.close-action {
+      cursor: pointer;
+      background-color: transparent;
+
+      &>.button {
+        background-color: transparent;
+        border: none;
+        color: #fff;
+        cursor: pointer;
+        font-size: 16px;
+      }
+    }
+  }
+
+  &__content {
+    display: flex;
+    padding: 1rem;
+
+    &>.row>.photo {
+      flex: 1;
+      margin-right: 10px;
+      max-width: 7rem;
+
+      &>img {
+        max-width: 100%;
+        height: auto;
+      }
+    }
+
+    &>.row>.info {
+      flex: 2;
+
+      &>.fullname {
+        font-family: "Manrope-Bold" !important;
+        font-size: 16px;
+        margin-bottom: 5px;
+      }
+
+      &>.birth-place {
+        font-size: 14px;
+        line-height: 1.5;
+      }
+    }
+  }
+
+  &__photo {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+
+  &__close-btn {
+    background-color: dodgerblue;
+    border: none;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .hero-card {
+    max-width: 450px;
+
+    &__content {
+
+      &>.row>.photo {
+        max-width: 6rem;
+      }
+
+      &>.row>.info {
+        flex: 2;
+
+        &>.fullname {
+          font-size: 14px;
+        }
+
+        &>.birth-place {
+          font-size: 12px;
+          line-height: 1;
+        }
+
+        &>.rank{
+          font-size: 12px;
+        }
+      }
+
+      &>.feat{
+        font-size: 12px;
+      }
+    }
+  }
+}
+
+@media (max-width: 960px) {
+  .hero-card {
+    max-width: 350px;
+
+    &__content {
+      padding: 0.6rem;
+
+      &>.row>.photo {
+        max-width: 4rem;
+      }
+    }
+  }
+}
+
+@media (max-width: 660px) {
+  .hero-card {
+    max-width: 305px;
+  }
+}

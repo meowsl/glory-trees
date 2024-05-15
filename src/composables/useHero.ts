@@ -13,8 +13,18 @@ export function useHero() {
     return response
   }
 
+  const uploadHero = async (formData: FormData) => {
+    const response = await api.post('heroes/applications/create', formData, {
+      headers: {
+        "Content-Type": "multipart/form-data"
+      }
+    })
+    return response
+  }
+
   return {
     getHeroList,
-    getHero
+    getHero,
+    uploadHero
   }
 }

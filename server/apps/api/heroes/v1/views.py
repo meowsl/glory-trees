@@ -1,4 +1,5 @@
 from rest_framework import views, generics
+from rest_framework.throttling import ScopedRateThrottle
 from .serializers import (
     HeroesAPI,
     ApplicationAPI,
@@ -9,7 +10,6 @@ from apps.api.heroes.models import (
     Application,
     Archive
 )
-
 class HeroesListAPIView(generics.ListAPIView):
     queryset = Heroes.objects.all()
     serializer_class = HeroesAPI
@@ -28,6 +28,8 @@ class ApplicationAPIView(generics.RetrieveAPIView):
 class ApplicationCreateAPIView(generics.CreateAPIView):
     queryset = Application.objects.all()
     serializer_class = ApplicationAPI
+    throttle_classes = (ScopedRateThrottle, )
+    throttle_scope = 'applications'
 
 class ArchiveListAPIView(generics.ListAPIView):
     queryset = Archive.objects.all()

@@ -3,10 +3,12 @@
     <BannerApp />
     <CarouselApp />
     <AboutApp />
-    <TreesMap />
+    <!-- <TreesMap /> -->
+    <HeroMap />
     <SoldierApp />
     <QuizApp />
     <TeamApp />
+
   </q-page>
 </template>
 
@@ -14,8 +16,9 @@
 import BannerApp from 'src/components/BannerApp.vue';
 import CarouselApp from 'src/components/CarouselApp.vue';
 import AboutApp from 'src/components/AboutApp.vue';
-import TreesMap from 'src/components/TreesMap.vue';
+// import TreesMap from 'src/components/TreesMap.vue';
 import SoldierApp from 'src/components/SoldierApp.vue';
 import QuizApp from 'src/components/QuizApp.vue';
 import TeamApp from 'src/components/TeamApp.vue';
+import HeroMap from 'src/components/HeroMap.vue';
 </script>
