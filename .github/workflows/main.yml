@@ -8,4 +8,9 @@ jobs:
 
     steps:
     - name: Run echo command
-      run: echo ${{ secrets.EMPTY_ROW }}
+      run: |
+        if [ -n "${{ secrets.SECRET_KEY }}" ]; then
+          echo "Successfully retrieved secret key"
+        else
+          echo "Failed to retrieve secret key"
+        fi
