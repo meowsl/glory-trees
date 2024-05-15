@@ -30,7 +30,17 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Check current directory
+      - name: Check Dir
         run: |
           pwd
           ls -la
+
+      - name: Frontend-Docker
+        run: |
+          docker image build -t ghcr.io/meowsl/glory-trees:frontend -f deploy/Dockerfile:frontend .
+          echo "Success build image for Frontend"
+
+      - name: Frontend-Docker
+        run: |
+          docker image build -t ghcr.io/meowsl/glory-trees:backend -f deploy/Dockerfile:backend .
+          echo "Success build image for Backend"
