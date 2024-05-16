@@ -9,6 +9,8 @@ jobs:
   install-frontend:
     name: Install Frontend
     runs-on: ubuntu-latest
+    container:
+      image: debian:10
 
     steps:
       - uses: actions/checkout@v2
@@ -20,6 +22,9 @@ jobs:
   install-backend:
     name: Install Backend
     runs-on: ubuntu-latest
+    container:
+      image: debian:10
+
     steps:
       - uses: actions/checkout@v2
 
@@ -38,6 +43,8 @@ jobs:
     needs: install-frontend
     if: success()
     runs-on: ubuntu-latest
+    container:
+      image: debian:10
 
     steps:
       - uses: actions/checkout@v2
@@ -50,7 +57,9 @@ jobs:
     name: Build Backend
     needs: install-backend
     if: success()
-    runs-on: install-backend
+    runs-on: ubuntu-latest
+    container:
+      image: debian:10
 
     steps:
       - uses: actions/checkout@v2
