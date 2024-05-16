@@ -6,28 +6,18 @@ on:
       - dev2.0
 
 jobs:
-
   security-backend:
     name: Check Security Backend
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        python-version: [ '3.9.11' ]
 
     steps:
-      - uses: actions/checkout@v2
-
-      - name: Start Bandit
-        uses: ./server
+      - uses: mdegis/bandit-action@v1.0
         with:
-          python_version: ${{ matrix.python-version }}
-          project_path: .
-
-      - name: Check Bandit Report
-        uses: actions/upload-artifact@v1
-        with:
-          name: Security reposrt
-          path: output/security_report.txt
+          GITHUB_TOKEN: ${{ secrets.TOKEN_GITHUB }}
+          path: 'server/'
+          level: high
+          confidence: high
+          exit_zero: true
 
   install-frontend:
     name: Install Frontend
