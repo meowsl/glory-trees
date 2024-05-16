@@ -7,6 +7,7 @@ run-quasar-server:
 
 install-backend:
 	poetry install --with dev --no-root
+	poetry run bandit-config-generator -o bandit.config.yml
 
 install-backend-prod:
 	poetry install --with prod --no-root
