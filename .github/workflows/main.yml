@@ -6,6 +6,29 @@ on:
       - dev2.0
 
 jobs:
+
+  security-backend:
+    name: Check Security Backend
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: [ '3.9.11' ]
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Start Bandit
+        uses: ./server
+        with:
+          python_version: ${{ matrix.python-version }}
+          project_path: .
+
+      - name: Check Bandit Report
+        uses: actions/upload-artifact@v1
+        with:
+          name: Security reposrt
+          path: output/security_report.txt
+
   install-frontend:
     name: Install Frontend
     runs-on: ubuntu-latest
@@ -19,6 +42,8 @@ jobs:
 
   install-backend:
     name: Install Backend
+    needs: security-backend
+    if: success()
     runs-on: ubuntu-latest
 
     steps:
