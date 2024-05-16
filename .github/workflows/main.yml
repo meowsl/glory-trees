@@ -18,8 +18,8 @@ jobs:
       - name: Configure Debian
         run: |
           apt-get update \
-          && apt-get upgrade \
-          && apt-get install make
+          && apt-get upgrade -y \
+          && apt-get install make -y
 
       - name: Install
         run: |
@@ -39,8 +39,8 @@ jobs:
       - name: Configure Debian
         run: |
           apt-get update \
-          && apt-get upgrade \
-          && apt-get install \
+          && apt-get upgrade -y \
+          && apt-get install -y \
           make \
           curl
 
@@ -68,8 +68,8 @@ jobs:
       - name: Configure Debian
         run: |
           apt-get update \
-          && apt-get upgrade \
-          && apt-get install \
+          && apt-get upgrade -y \
+          && apt-get install -y \
           curl \
           ca-certificates \
           -m 0755 -d /etc/apt/keyrings \
@@ -79,7 +79,7 @@ jobs:
           "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/debian \
           $(. /etc/os-release && echo "$VERSION_CODENAME") stable" | \
           sudo tee /etc/apt/sources.list.d/docker.list > /dev/null \
-          && apt-get install \
+          && apt-get install -y \
           docker-cer docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin \
           && groupadd docker \
           && usermode -aG docker $USER \
@@ -107,8 +107,8 @@ jobs:
       - name: Configure Debian
         run: |
           apt-get update \
-          && apt-get upgrade \
-          && apt-get install \
+          && apt-get upgrade -y \
+          && apt-get install -y \
           curl \
           ca-certificates \
           -m 0755 -d /etc/apt/keyrings \
@@ -118,7 +118,7 @@ jobs:
           "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/debian \
           $(. /etc/os-release && echo "$VERSION_CODENAME") stable" | \
           sudo tee /etc/apt/sources.list.d/docker.list > /dev/null \
-          && apt-get install \
+          && apt-get install -y \
           docker-cer docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin \
           && groupadd docker \
           && usermode -aG docker $USER \
