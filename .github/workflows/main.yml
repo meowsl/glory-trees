@@ -11,14 +11,26 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
+      - name: Checkout Code
+        uses: actions/checkout@v4
 
-      - name: Start Scan bandit
-        uses: mdegis/bandit-action@v1.0.1
+      - name: Set Python
+        uses: action/setup-python@v3
         with:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          path: '.'
-          exit_zero: true
+          python-version: 3.9.11
+
+      - name: Install Bandit
+        run: pip install bandit
+
+      - name: Run Scan
+        run: bandit -r ./server -f json -o bandit-report.json
+
+      - name: Upload Scan Artifact
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: bandit-report
+          path: bandit-report.json
 
   install-frontend:
     name: Install Frontend
