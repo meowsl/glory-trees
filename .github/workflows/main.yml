@@ -17,7 +17,7 @@ jobs:
         uses: mdegis/bandit-action@v1.0
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          path: '/home/runner/work/glory-trees/glory-trees/server'
+          path: '.'
           exit_zero: true
 
   install-frontend:
