@@ -71,7 +71,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: Build image
+      - name: Build Image
         run: |
           cd /home/runner/work/glory-trees/glory-trees
           docker image build -t ghcr.io/meowsl/glory-trees:frontend -f deploy/Dockerfile.frontend .
