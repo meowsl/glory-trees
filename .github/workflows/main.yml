@@ -67,6 +67,9 @@ jobs:
     needs: install-frontend
     if: success()
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
 
     steps:
       - uses: actions/checkout@v2
