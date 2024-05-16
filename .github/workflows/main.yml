@@ -22,7 +22,7 @@ jobs:
           && apt-get install -y \
           make \
           curl \
-          && curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash - \
+          && curl -fsSL https://deb.nodesource.com/setup_18.x | -E bash - \
           && apt-get install nodejs \
           && npm install --global yarn
 
@@ -54,7 +54,7 @@ jobs:
 
       - name: Poetry
         run: |
-          curl -sSL https://install.python-poetry.org | POETRY_VERSION=1.7.1 python -
+          curl -sSL https://install.python-poetry.org | POETRY_VERSION=1.7.1 python3 -
           export PATH="${PATH}:/etc/poetry/bin"
 
       - name: Backend-Install
