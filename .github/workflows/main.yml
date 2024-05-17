@@ -15,10 +15,14 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: appleboy/ssh-action@master
-        with:
-          host: ${{ secrets.HOST_IP }}
-          username: ${{ secrets.HOST_USERNAME }}
-          password: ${{ secrets.HOST_PASSWORD }}
-          script: |
-            ls -la ~/glory-trees
+      - uses: actions/checkout@v2
+
+      - name: install keys
+        run: |
+          install -m 600 -D /dev/null ~/.ssh/id_rsa
+          echo  "${{ secrets.HOST_SSH_KEY }}" > ~/.ssh/id_rsa
+          ssh-keyscan -H ${{ secrets.HOST_IP }} > ~/.ssh/known_hosts
+
+      - name: connect and pull
+        run: |
+          ssh ${{ secrets.HOST_USERNAME }}@${{ secrets.HOST_IP }} "docker compose pull"
