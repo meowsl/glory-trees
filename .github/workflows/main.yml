@@ -154,4 +154,5 @@ jobs:
           password: ${{ secrets.HOST_PASSWORD }}
           script: |
             cd /var/www/glorytrees
-            ls -la
+            echo ls -la
+            echo "end code"
