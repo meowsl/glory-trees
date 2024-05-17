@@ -9,12 +9,27 @@ on:
   workflow_dispatch:
 
 jobs:
+  security-frontend:
+    name: Check Security Frontend
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Yarn Audit
+        uses: pragatheeswarans/yarn-audit-action@v1.0.0
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          label: audit-issues
+          paths: |
+            .
+
   security-backend:
     name: Check Security Backend
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v2
 
       - name: Set Python
         uses: actions/setup-python@v3
@@ -36,6 +51,8 @@ jobs:
 
   install-frontend:
     name: Install Frontend
+    needs: security-frontend
+    if: success()
     runs-on: ubuntu-latest
 
     steps:
