@@ -101,7 +101,7 @@ jobs:
       - name: Build Image
         run: |
           cd /home/runner/work/$REPOSITORY_NAME/$REPOSITORY_NAME
-          docker image build -t ghcr.io/meowsl/$REPOSITORY_NAME:frontend -f deploy/Dockerfile.frontend .
+          docker image build -t ghcr.io/${{ github.actor }}/$REPOSITORY_NAME:frontend -f deploy/Dockerfile.frontend .
           echo "Success build image for Frontend"
 
       - name: Docker Login
@@ -113,7 +113,7 @@ jobs:
 
       - name: Push Image
         run: |
-          docker image push ghcr.io/meowsl/$REPOSITORY_NAME:frontend
+          docker image push ghcr.io/${{ github.actor }}/$REPOSITORY_NAME:frontend
           echo "Success push image"
 
   build-backend:
@@ -128,7 +128,7 @@ jobs:
       - name: Build image
         run: |
           cd /home/runner/work/$REPOSITORY_NAME/$REPOSITORY_NAME
-          docker image build -t ghcr.io/meowsl/$REPOSITORY_NAME:backend -f deploy/Dockerfile.backend .
+          docker image build -t ghcr.io/${{ github.actor }}/$REPOSITORY_NAME:backend -f deploy/Dockerfile.backend .
           echo "Success build image for Backend"
 
       - name: Docker Login
@@ -140,7 +140,7 @@ jobs:
 
       - name: Push Image
         run: |
-          docker image push ghcr.io/meowsl/$REPOSITORY_NAME:backend
+          docker image push ghcr.io/${{ github.actor }}/$REPOSITORY_NAME:backend
           echo "Success push image"
 
   deploy:
