@@ -32,7 +32,7 @@ class Command(BaseCommand):
         repo_url_info = self.get_repo_url()
 
         env_to_secrets = EnvToSecrets(access_token, f'{repo_url_info["user"]}/{repo_url_info["repo_name"].removesuffix(".git")}', repo_url_info["user"])
-        success = env_to_secrets.upload_secrets(exit_on_failure=exit_on_failure, debug_print=debug_print, host_ip=host_ip, host_username=host_username, host_password=host_password)
+        success = env_to_secrets.upload_secrets(exit_on_failure=exit_on_failure, debug_print=debug_print, host_ip=host_ip, host_username=host_username, host_password=host_password, repository=repo_url_info["repo_name"].removesuffix(".git"))
 
     def get_repo_url(self) -> dict[str, str]:
         git_config_path = os.path.join(settings.PROJECT_DIR, '.git', 'config')
@@ -52,8 +52,6 @@ class EnvToSecrets:
         self.username = username
         self.access_token = access_token
         self.github_auth = Auth.Token(access_token)
-        print(self.repo_name)
-        print(access_token)
         self.g = Github(auth=self.github_auth)
         self.repo = self.g.get_repo(self.repo_name)
 
@@ -81,7 +79,7 @@ class EnvToSecrets:
         if debug_print:
             print(f"✅ - {secret_name}")
 
-    def upload_secrets(self, host_ip: str, host_username: str, host_password: str, exit_on_failure: bool = True, debug_print: bool = True) -> bool:
+    def upload_secrets(self, host_ip: str, host_username: str, host_password: str, repository: str, exit_on_failure: bool = True, debug_print: bool = True) -> bool:
         path_env = settings.ENV_FILE
         if not os.path.exists(path_env):
             print("No '.env' file found at current directory. Exiting...")
@@ -112,6 +110,7 @@ class EnvToSecrets:
             "HOST_IP": host_ip,
             "HOST_USERNAME": host_username,
             "HOST_PASSWORD": host_password,
+            "REPOSITORY_NAME": repository
         }
         env_values.update(new_values)
 
