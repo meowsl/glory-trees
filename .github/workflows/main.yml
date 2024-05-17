@@ -139,3 +139,19 @@ jobs:
         run: |
           docker image push ghcr.io/meowsl/glory-trees:backend
           echo "Success push image"
+
+  deploy:
+    name: Deploy to host
+    needs: [build-frontend, build-backend]
+    if: success()
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.HOST_IP }}
+          username: ${{ secrets.HOST_USERNAME }}
+          password: ${{ secrets.HOST_PASSWORD }}
+          script: |
+            cd /var/www/glorytrees
+            ls -la
