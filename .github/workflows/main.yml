@@ -23,6 +23,7 @@ jobs:
           label: audit-issues
           paths: |
             .
+            src
 
   security-backend:
     name: Check Security Backend
