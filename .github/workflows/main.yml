@@ -53,8 +53,8 @@ jobs:
           name: bandit-report
           path: bandit-report.csv
 
-  install-frontend:
-    name: Install Frontend
+  build-frontend:
+    name: Install and Build Frontend
     needs: security-frontend
     if: success()
     runs-on: ubuntu-latest
@@ -67,8 +67,8 @@ jobs:
           yarn build
           echo "Success frontend"
 
-  install-backend:
-    name: Install Backend
+  build-backend:
+    name: Install and Build Backend
     needs: security-backend
     if: success()
     runs-on: ubuntu-latest
@@ -85,63 +85,6 @@ jobs:
         run: |
           make install-backend
           echo "Success backend"
-
-  build-frontend:
-    name: Build Frontend
-    needs: install-frontend
-    if: success()
-    runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      packages: write
-
-    steps:
-      - uses: actions/checkout@v2
-
-      - name: Build Image
-        run: |
-          cd /home/runner/work/$REPOSITORY_NAME/$REPOSITORY_NAME
-          docker image build -t ghcr.io/${{ github.actor }}/$REPOSITORY_NAME:frontend -f deploy/Dockerfile.frontend .
-          echo "Success build image for Frontend"
-
-      - name: Docker Login
-        uses: docker/login-action@v2
-        with:
-          registry: ghcr.io
-          username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Push Image
-        run: |
-          docker image push ghcr.io/${{ github.actor }}/$REPOSITORY_NAME:frontend
-          echo "Success push image"
-
-  build-backend:
-    name: Build Backend
-    needs: install-backend
-    if: success()
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v2
-
-      - name: Build image
-        run: |
-          cd /home/runner/work/$REPOSITORY_NAME/$REPOSITORY_NAME
-          docker image build -t ghcr.io/${{ github.actor }}/$REPOSITORY_NAME:backend -f deploy/Dockerfile.backend .
-          echo "Success build image for Backend"
-
-      - name: Docker Login
-        uses: docker/login-action@v2
-        with:
-          registry: ghcr.io
-          username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Push Image
-        run: |
-          docker image push ghcr.io/${{ github.actor }}/$REPOSITORY_NAME:backend
-          echo "Success push image"
 
   deploy:
     name: Deploy to host
