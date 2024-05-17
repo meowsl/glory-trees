@@ -17,12 +17,6 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: install keys
-        run: |
-          install -m 600 -D /dev/null ~/.ssh/id_rsa
-          echo  "${{ secrets.HOST_SSH_KEY }}" > ~/.ssh/id_rsa
-          ssh-keyscan -H ${{ secrets.HOST_IP }} > ~/.ssh/known_hosts
-
       - name: connect and pull
         run: |
           ssh ${{ secrets.HOST_USERNAME }}@${{ secrets.HOST_IP }} "docker compose pull"
