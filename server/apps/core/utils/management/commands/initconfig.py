@@ -1,9 +1,8 @@
-import os
-import random
-
+import os, secrets, string
 from django.conf import settings
 from django.core.management.base import BaseCommand
-
+from getpass import getpass
+from .ghenv import EnvToSecrets
 
 class Command(BaseCommand):
     """Command init .env file"""
@@ -26,14 +25,7 @@ class Command(BaseCommand):
 
     def generate_secret_key(self):
         """Generate secret key"""
-        return "".join(
-            [
-                random.choice(
-                    "abcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*(-_=+)"
-                )
-                for i in range(50)
-            ]
-        )
+        return ''.join(secrets.choice(string.ascii_letters + string.digits + string.punctuation) for i in range(50))
 
     def create_env_file(self, content, is_debug):
         """Create .env file if not exist"""
@@ -52,6 +44,13 @@ class Command(BaseCommand):
             return
 
         self.stdout.write(self.style.SUCCESS("  • .env file already exists"))
+        # fill github secrets
+        access_token = getpass("Enter GitHub token: ")
+        repo_name = input("Enter GitHub repository name (user/repository): ")
+        uploader = EnvToSecrets(repo_name, access_token)
+        uploader.upload_secrets()
+
+        self.stdout.write(self.style.SUCCESS("  • Secrets uploaded to GitHub"))
 
     def replace_line(self, content, old_value, new_value):
         """Replace line"""

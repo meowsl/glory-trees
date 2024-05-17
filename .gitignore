@@ -3,6 +3,8 @@ node_modules/
 bower_components/
 jspm_packages/
 
+bandit.config.yml
+
 # Docker volumes folder
 /docker/
 /.docker/
