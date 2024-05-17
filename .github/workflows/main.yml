@@ -23,4 +23,5 @@ jobs:
           password: ${{ secrets.HOST_PASSWORD }}
           port: 22
           key: ${{ secrets.HOST_SSH_KEY }}
+          passphrase: meow meow
           script: whoami
