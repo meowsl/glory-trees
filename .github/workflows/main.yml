@@ -19,4 +19,4 @@ jobs:
 
       - name: connect and pull
         run: |
-          ssh ${{ secrets.HOST_USERNAME }}@${{ secrets.HOST_IP }} "docker compose pull"
+          ssh ${{ secrets.HOST_USERNAME }}@${{ secrets.HOST_IP }} "docker compose pull && exit"
